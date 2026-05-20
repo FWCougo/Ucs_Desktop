@@ -4,6 +4,8 @@ using UnityEngine;
 public class GUN_SO : WEAPON_SO
 {
     public int maxAmmo = 8;
-    public int realoadTime = 3;
+    public float realoadTime = 3;
     public BULLET bulletPrefab;
+    public float bulletTimeSpan = 1f;
+
 }

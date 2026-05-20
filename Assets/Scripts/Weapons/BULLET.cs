@@ -4,16 +4,16 @@ public class BULLET : MonoBehaviour
 {
     [SerializeField]
     private float bulletSpeed = 20f;
+    [SerializeField]
     private Vector3 bulletDir;
 
-    private void Start()
-    {
-        Destroy(gameObject, 2);
-    }
 
-    public void ReceiveDirection(Vector3 dir)
+    public void ReceiveDirection(Vector3 dir, float autoDestroy)
     {
-        bulletDir = dir;
+        Destroy(gameObject, autoDestroy);
+
+        bulletDir.x = dir.x;
+        bulletDir.z = dir.y;
     }
 
     private void FixedUpdate()
