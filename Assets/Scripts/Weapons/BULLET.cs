@@ -4,6 +4,7 @@ public class BULLET : MonoBehaviour
 {
     [SerializeField]
     private float bulletSpeed = 20f;
+    [SerializeField]
     private Vector3 bulletDir;
 
     public void ReceiveDirection(Vector3 dir, float _lifeSpan)
