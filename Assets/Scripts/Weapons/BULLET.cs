@@ -7,10 +7,9 @@ public class BULLET : MonoBehaviour
     [SerializeField]
     private Vector3 bulletDir;
 
-
-    public void ReceiveDirection(Vector3 dir, float autoDestroy)
+    public void ReceiveDirection(Vector3 dir, float _lifeSpan)
     {
-        Destroy(gameObject, autoDestroy);
+        Destroy(gameObject, _lifeSpan);
 
         bulletDir.x = dir.x;
         bulletDir.z = dir.y;

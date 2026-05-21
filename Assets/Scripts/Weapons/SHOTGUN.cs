@@ -25,10 +25,10 @@ public class SHOTGUN : GUN
 
     public Vector2 RandomizeDirection(Vector2 direction, float spreadAngle)
     {
-        // Converte a direÁ„o para ‚ngulo em graus
+        // Converte a dire√ß√£o para √¢ngulo em graus
         float baseAngle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
 
-        // Adiciona um offset aleatÛrio dentro do cone de dispers„o
+        // Adiciona um offset aleat√≥rio dentro do cone de dispers√£o
         float randomOffset = Random.Range(-spreadAngle / 2f, spreadAngle / 2f);
 
         float finalAngle = (baseAngle + randomOffset) * Mathf.Deg2Rad;
@@ -45,10 +45,23 @@ public class SHOTGUN : GUN
             for (int i = 0; i < 5; i++)
             {
                 BULLET _bullet = Instantiate(gun_so.bulletPrefab, boca_transform.position, Quaternion.identity).GetComponent<BULLET>();
-
-                Vector2 spreadDir = RandomizeDirection(direction, 30f); // 30∞ de cone
-                _bullet.ReceiveDirection(spreadDir, gun_so.bulletTimeSpan);
+                Vector2 spreadDir = RandomizeDirection(direction, 25f);
+                _bullet.ReceiveDirection(spreadDir, gun_so.bulletLifeSpan);
             }
         }
+    }
+
+    public Vector2 RandomizeDirection(Vector2 direction, float spreadAngle)
+    {
+        // Converte a dire√ß√£o para √¢ngulo em graus
+        float baseAngle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+
+        // Adiciona um offset aleat√≥rio dentro do cone de dispers√£o
+        float randomOffset = Random.Range(-spreadAngle / 2f, spreadAngle / 2f);
+
+        float finalAngle = (baseAngle + randomOffset) * Mathf.Deg2Rad;
+
+        // Converte de volta para vetor
+        return new Vector2(Mathf.Cos(finalAngle), Mathf.Sin(finalAngle));
     }
 }

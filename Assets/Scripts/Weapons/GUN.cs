@@ -47,7 +47,7 @@ public class GUN : WEAPON
     {
         print("Reloading " + gun_so.itemName);
 
-        float  waitTime = gun_so.realoadTime;
+        float waitTime = gun_so.realoadTime;
 
         yield return new WaitForSeconds(waitTime);
 
