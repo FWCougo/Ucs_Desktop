@@ -6,14 +6,12 @@ public class BULLET : MonoBehaviour
     private float bulletSpeed = 20f;
     private Vector3 bulletDir;
 
-    private void Start()
+    public void ReceiveDirection(Vector3 dir, float _lifeSpan)
     {
-        Destroy(gameObject, 2);
-    }
+        Destroy(gameObject, _lifeSpan);
 
-    public void ReceiveDirection(Vector3 dir)
-    {
-        bulletDir = dir;
+        bulletDir.x = dir.x;
+        bulletDir.z = dir.y;
     }
 
     private void FixedUpdate()

@@ -2,6 +2,6 @@ using UnityEngine;
 
 public class WEAPON_SO : ITEM_SO
 {
-    public int cadency = 1;
-    public int damage = 3;
+    public float cadency = 1;
+    public float damage = 3;
 }

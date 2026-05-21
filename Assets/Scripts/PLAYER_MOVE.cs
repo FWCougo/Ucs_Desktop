@@ -4,27 +4,30 @@ using UnityEngine.InputSystem;
 
 public class PLAYER_MOVE : MonoBehaviour
 {
+    [Header("REFERENCES")]
+    [SerializeField]
+    private CharacterController characterController;
+    [SerializeField]
+    private PLAYER_SO player_SO;
 
+    [Header("MOVEMENT SPEED")]
+    [SerializeField]
+    private float speed;
+
+    [Header("SPRITES")]
     [SerializeField]
     private SpriteRenderer p_Sprite;
     [SerializeField]
     private SpriteRenderer g_Sprite;
 
-    [SerializeField]
-    private CharacterController characterController;
-
+    [Header("DIRECTION")]
     [SerializeField]
     private float angleDir;
-
     [SerializeField]
     private Vector3 dir;
 
     [SerializeField]
-    private float speed;
-
-    [SerializeField]
     private MOVEMENT_STATE moveState;
-
 
     public MOVEMENT_STATE MoveState 
     {         
@@ -54,16 +57,7 @@ public class PLAYER_MOVE : MonoBehaviour
                 dir.x = _dir.x;
                 dir.z = _dir.y;
 
-                if (dir.x < 0)
-                {
-                    p_Sprite.flipX = true;
-                    g_Sprite.flipX = true;
-                }
-                else
-                {
-                    p_Sprite.flipX = false;
-                    g_Sprite.flipX = false;
-                }
+                ChangeSprite();
 
                 MoveState = MOVEMENT_STATE.moving;
                 break;
@@ -75,9 +69,31 @@ public class PLAYER_MOVE : MonoBehaviour
         
     }
 
-    public void ChangeDir()
+    public void ChangeSprite()
     {
-        transform.eulerAngles = new Vector3(0,angleDir,0);
+        if (dir.x < 0)
+        {
+            p_Sprite.flipX = true;
+            g_Sprite.flipX = true;
+        }
+        else
+        {
+            p_Sprite.flipX = false;
+            g_Sprite.flipX = false;
+        }
+
+        if(angleDir == 0)
+        {
+            p_Sprite.sprite = player_SO.backSprite;
+        }
+        else if(angleDir == 180)
+        {
+            p_Sprite.sprite = player_SO.frontSprite;
+        }
+        else
+        {
+            p_Sprite.sprite = player_SO.sideSprite;
+        }
     }
 
     public bool isMoving()

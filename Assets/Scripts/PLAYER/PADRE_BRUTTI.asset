@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64971708439c945499ff1fd174dcd01d, type: 3}
+  m_Name: PADRE_BRUTTI
+  m_EditorClassIdentifier: Assembly-CSharp::PLAYER_SO
+  characterName: PADRE BRUTTI
+  frontSprite: {fileID: -454257541, guid: f74de26a524aa3445a9dfe19113c89ab, type: 3}
+  backSprite: {fileID: 972121418, guid: da7b912fb1eeaeb4cb4ff40f473c08e3, type: 3}
+  sideSprite: {fileID: -50085094, guid: 799c5829446f3ff429d3524bb4153819, type: 3}
