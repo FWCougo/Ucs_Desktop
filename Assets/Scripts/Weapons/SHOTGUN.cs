@@ -50,18 +50,4 @@ public class SHOTGUN : GUN
             }
         }
     }
-
-    public Vector2 RandomizeDirection(Vector2 direction, float spreadAngle)
-    {
-        // Converte a direção para ângulo em graus
-        float baseAngle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-
-        // Adiciona um offset aleatório dentro do cone de dispersão
-        float randomOffset = Random.Range(-spreadAngle / 2f, spreadAngle / 2f);
-
-        float finalAngle = (baseAngle + randomOffset) * Mathf.Deg2Rad;
-
-        // Converte de volta para vetor
-        return new Vector2(Mathf.Cos(finalAngle), Mathf.Sin(finalAngle));
-    }
 }

@@ -1,6 +1,8 @@
 using TMPro;
 using UnityEngine;
+using DG.Tweening;
 using UnityEngine.InputSystem;
+using Unity.VisualScripting;
 
 public class PLAYER_MOVE : MonoBehaviour
 {
@@ -26,6 +28,12 @@ public class PLAYER_MOVE : MonoBehaviour
     [SerializeField]
     private Vector3 dir;
 
+    [Header("ANIMATION")]
+    [SerializeField] private float skipsSpeed = 0.25f;
+    [SerializeField] private float skipsHeight = 1f;
+
+
+
     [SerializeField]
     private MOVEMENT_STATE moveState;
 
@@ -39,6 +47,8 @@ public class PLAYER_MOVE : MonoBehaviour
             moveState = value;
         }
     }
+
+    Tween skips;
 
     private void Update()
     {
@@ -59,11 +69,18 @@ public class PLAYER_MOVE : MonoBehaviour
 
                 ChangeSprite();
 
+                if (!isMoving())
+                {
+                    skips = p_Sprite.transform.DOLocalMoveY(skipsHeight, skipsSpeed).SetLoops(-1, LoopType.Yoyo);
+                }
+
                 MoveState = MOVEMENT_STATE.moving;
                 break;
 
             case InputActionPhase.Canceled:
                 MoveState = MOVEMENT_STATE.idle;
+                p_Sprite.transform.localPosition = Vector3.zero;
+                skips.Kill();
                 break;
         }
         

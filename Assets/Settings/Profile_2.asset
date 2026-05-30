@@ -159,7 +159,6 @@ MonoBehaviour:
   - {fileID: -8120597809716894796}
   - {fileID: 999819515126041266}
   - {fileID: 703446228242911335}
-  - {fileID: 5982062322547323177}
   - {fileID: 8857396669790632168}
 --- !u!114 &703446228242911335
 MonoBehaviour:
@@ -173,22 +172,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c5e1dc532bcb41949b58bc4f2abfbb7e, type: 3}
   m_Name: LensDistortion
   m_EditorClassIdentifier: Unity.RenderPipelines.Universal.Runtime::UnityEngine.Rendering.Universal.LensDistortion
-  active: 0
+  active: 1
   intensity:
     m_OverrideState: 1
-    m_Value: 1
+    m_Value: 0.5
   xMultiplier:
-    m_OverrideState: 0
-    m_Value: 1
+    m_OverrideState: 1
+    m_Value: 0.5
   yMultiplier:
-    m_OverrideState: 0
-    m_Value: 1
+    m_OverrideState: 1
+    m_Value: 0.5
   center:
     m_OverrideState: 0
     m_Value: {x: 0.5, y: 0.5}
   scale:
     m_OverrideState: 1
-    m_Value: 0.84
+    m_Value: 1
 --- !u!114 &999819515126041266
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -205,25 +204,6 @@ MonoBehaviour:
   intensity:
     m_OverrideState: 1
     m_Value: 0.056
---- !u!114 &5982062322547323177
-MonoBehaviour:
-  m_ObjectHideFlags: 3
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fb60a22f311433c4c962b888d1393f88, type: 3}
-  m_Name: PaniniProjection
-  m_EditorClassIdentifier: Unity.RenderPipelines.Universal.Runtime::UnityEngine.Rendering.Universal.PaniniProjection
-  active: 1
-  distance:
-    m_OverrideState: 1
-    m_Value: 0.5
-  cropToFit:
-    m_OverrideState: 0
-    m_Value: 1
 --- !u!114 &8857396669790632168
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -242,7 +222,7 @@ MonoBehaviour:
     m_Value: 0
   intensity:
     m_OverrideState: 1
-    m_Value: 1
+    m_Value: 0.5
   response:
     m_OverrideState: 0
     m_Value: 0.8
