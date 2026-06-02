@@ -16,7 +16,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2563892741359072315
 Transform:
   m_ObjectHideFlags: 0
@@ -113,8 +113,8 @@ TrailRenderer:
     colorGradient:
       serializedVersion: 2
       key0: {r: 0.6603774, g: 0.6603774, b: 0.6603774, a: 1}
-      key1: {r: 0, g: 0, b: 0, a: 0.7254902}
-      key2: {r: 0, g: 0, b: 0, a: 0}
+      key1: {r: 0, g: 0, b: 0, a: 0.67058825}
+      key2: {r: 0, g: 0, b: 0, a: 0.7254902}
       key3: {r: 0, g: 0, b: 0, a: 0}
       key4: {r: 0, g: 0, b: 0, a: 0}
       key5: {r: 0, g: 0, b: 0, a: 0}
@@ -129,8 +129,8 @@ TrailRenderer:
       ctime6: 0
       ctime7: 0
       atime0: 0
-      atime1: 65535
-      atime2: 0
+      atime1: 964
+      atime2: 65535
       atime3: 0
       atime4: 0
       atime5: 0
@@ -139,7 +139,7 @@ TrailRenderer:
       m_Mode: 0
       m_ColorSpace: 0
       m_NumColorKeys: 2
-      m_NumAlphaKeys: 2
+      m_NumAlphaKeys: 3
     numCornerVertices: 0
     numCapVertices: 0
     alignment: 0
@@ -167,7 +167,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4015223652399413270
 Transform:
   m_ObjectHideFlags: 0
@@ -264,8 +264,8 @@ TrailRenderer:
     colorGradient:
       serializedVersion: 2
       key0: {r: 0.6603774, g: 0.6603774, b: 0.6603774, a: 1}
-      key1: {r: 0, g: 0, b: 0, a: 0.7254902}
-      key2: {r: 0, g: 0, b: 0, a: 0}
+      key1: {r: 0, g: 0, b: 0, a: 0.67058825}
+      key2: {r: 0, g: 0, b: 0, a: 0.7254902}
       key3: {r: 0, g: 0, b: 0, a: 0}
       key4: {r: 0, g: 0, b: 0, a: 0}
       key5: {r: 0, g: 0, b: 0, a: 0}
@@ -280,8 +280,8 @@ TrailRenderer:
       ctime6: 0
       ctime7: 0
       atime0: 0
-      atime1: 65535
-      atime2: 0
+      atime1: 964
+      atime2: 65535
       atime3: 0
       atime4: 0
       atime5: 0
@@ -290,7 +290,7 @@ TrailRenderer:
       m_Mode: 0
       m_ColorSpace: 0
       m_NumColorKeys: 2
-      m_NumAlphaKeys: 2
+      m_NumAlphaKeys: 3
     numCornerVertices: 0
     numCapVertices: 0
     alignment: 0
@@ -405,6 +405,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6494087717359198832}
   - component: {fileID: 3391777263594539931}
+  - component: {fileID: 2156694232385666056}
   m_Layer: 0
   m_Name: CROSSARANG_GUN
   m_TagString: Untagged
@@ -442,9 +443,108 @@ MonoBehaviour:
   m_EditorClassIdentifier: '::'
   player_Trans: {fileID: 0}
   boomerang_SO: {fileID: 11400000, guid: b0459698ad419c64090352026cbd6b75, type: 2}
-  direction: {x: -1, y: 0, z: 0}
   g_Sprite: {fileID: 5254952196939676503}
   trails:
   - {fileID: 6222690323408248103}
   - {fileID: 1009760811700607904}
+  direction: {x: -1, y: 0, z: 0}
+  trailFadeOutDuration: 0.4
   canShoot: 1
+  source: {fileID: 2156694232385666056}
+--- !u!82 &2156694232385666056
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8772845456799890831}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_Resource: {fileID: 8300000, guid: c54e90c800e16d946bec8b7760067d99, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 1
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4

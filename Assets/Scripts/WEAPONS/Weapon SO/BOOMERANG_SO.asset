@@ -18,5 +18,5 @@ MonoBehaviour:
   damage: 1
   bulletPrefab: {fileID: 0}
   b_LifeSpan: 1
-  b_Range: 20
+  b_Range: 17
   b_ReturnAcceleration: 1

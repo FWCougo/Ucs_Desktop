@@ -1,130 +1,122 @@
+﻿using DG.Tweening;
 using System.Collections;
 using UnityEngine;
-using UnityEngine.Rendering;
-
+using static Unity.VisualScripting.Member;
 public class ENEMY : MonoBehaviour, IDamageable
 {
     public bool isAlive = true;
-
-    public SpriteRenderer enemySprite;
-
     public ENEMY_SO enemy_SO;
-    public PLAYER[] playersTransform;
     public Transform currentPlayer;
-    
-    private float dist = 1000;
-
-    [Header("HP and DMG")]
-    [SerializeField]
-    private float HP;
-    [SerializeField]
-    private bool canTakeDMG = true;
-
-
+    [Header("Sprite")]
+    public SpriteRenderer enemySprite;
+    [Header("HP")]
+    [SerializeField] private float HP;
+    [SerializeField] private bool canTakeDMG = true;
     [Header("VFX")]
-    [SerializeField]
-    private int bloodVFXAmount = 10;
-    [SerializeField]
-    private ParticleSystem[] bloodVFX_List;
-    [SerializeField]
-    private GameObject bloodSplatter_GO;
-
-    public void Damage(float _dmg)
+    [SerializeField] private int bloodVFXAmount = 10;
+    [SerializeField] private ParticleSystem[] bloodVFX_List;
+    [SerializeField] public GameObject bloodSplatter_GO;
+    [Header("SHAKE ANIMATION")]
+    [SerializeField] private float duration = 0.5f;
+    [SerializeField] private float strength = 1;
+    [SerializeField] private int vibrato = 10;
+    [SerializeField] private float randomness = 90;
+    [Header("SFX")]
+    [SerializeField] public AudioSource source;
+    [SerializeField] public AudioClip coin_clip;
+    [Header("DMG")]
+    [SerializeField] private float dmg;
+    public float DMG
     {
-        if (!canTakeDMG) return;
-        StartCoroutine(TakeDamage(_dmg));
-
+        get { return dmg; }
     }
 
-    IEnumerator TakeDamage(float _dmg)
+    private void Awake()
     {
+        HP = enemy_SO.m_HP;
+        dmg = enemy_SO.m_DMG;
+        bloodSplatter_GO.SetActive(false);
+        InstantiateBloodVFX();
+        FindClosestPlayer();
+    }
+    // ─── IDamageable ────────────────────────────────────────────────
+    public void Damage(float dmg)
+    {
+        if (canTakeDMG)
+            StartCoroutine(TakeDamage(dmg));
+    }
+    private IEnumerator TakeDamage(float dmg)
+    {
+        source.Play();
         canTakeDMG = false;
-
-        HP -= _dmg;
-
-        ParticleSystem vfx = GetBloodVFX();
-
-        if (vfx != null)
-        {
-            vfx.transform.SetParent(null);
-            vfx.transform.position = transform.position;
-            vfx.gameObject.SetActive(true);
-        }
-
-        if (HP < 0)
+        HP -= dmg;
+        PlayDmgAnimation();
+        PlayBloodVFX();
+        if (HP <= 0)
         {
             Die();
-            yield return null;
+            yield break; // Encerra a coroutine imediatamente
         }
-
         yield return new WaitForSeconds(0.1f);
-
         canTakeDMG = true;
-
-
-        yield return null;
     }
-
-    private void Die()
+    public virtual void Die()
     {
         isAlive = false;
         bloodSplatter_GO.transform.SetParent(null);
         bloodSplatter_GO.SetActive(true);
         gameObject.SetActive(false);
     }
-
-    private void GetAllPlayers()
-    {
-        playersTransform = FindObjectsByType<PLAYER>(FindObjectsSortMode.None);
-
-        float aux_dist = 0;
-
-        aux_dist = dist;
-
-        for(int i = 0; i<playersTransform.Length; i++)
-        {          
-            dist = Vector3.Distance(transform.position, playersTransform[i].transform.position);
-
-            if(dist < aux_dist)
-            {
-                currentPlayer = playersTransform[i].transform;
-            }
-
-            aux_dist = dist;
-        }             
-    }
-
-    void InstantiateBloodVFX()
+    // ─── VFX ────────────────────────────────────────────────────────
+    private void InstantiateBloodVFX()
     {
         bloodVFX_List = new ParticleSystem[bloodVFXAmount];
-
         for (int i = 0; i < bloodVFXAmount; i++)
         {
-            ParticleSystem _bloodVFX = Instantiate(enemy_SO.blood_VFX, transform);
-            _bloodVFX.gameObject.SetActive(false);
-
-            bloodVFX_List[i] = _bloodVFX;
+            ParticleSystem vfx = Instantiate(enemy_SO.blood_VFX, transform);
+            vfx.gameObject.SetActive(false);
+            bloodVFX_List[i] = vfx;
         }
     }
-
-    ParticleSystem GetBloodVFX()
+    private void PlayDmgAnimation()
     {
-        for (int i = 0; i < bloodVFXAmount; i++)
+        enemySprite.transform.DOShakePosition(duration, strength, vibrato, randomness).OnComplete(() =>
+            enemySprite.transform.localPosition = Vector3.zero
+        );
+    }
+    private void PlayBloodVFX()
+    {
+        ParticleSystem vfx = GetPooledBloodVFX();
+        if (vfx == null) return;
+        vfx.transform.SetParent(null);
+        vfx.transform.position = transform.position;
+        vfx.gameObject.SetActive(true);
+    }
+    private ParticleSystem GetPooledBloodVFX()
+    {
+        foreach (ParticleSystem vfx in bloodVFX_List)
         {
-            if (!bloodVFX_List[i].gameObject.activeInHierarchy)
-                return bloodVFX_List[i];
+            if (!vfx.gameObject.activeInHierarchy)
+                return vfx;
         }
-
         return null;
     }
-
-    private void Awake()
+    // ─── Player Targeting ───────────────────────────────────────────
+    private void FindClosestPlayer()
     {
-        GetAllPlayers();
-
-        HP = enemy_SO.m_HP;
-        bloodSplatter_GO.SetActive(false);
-
-        InstantiateBloodVFX();
+        PLAYER[] players = FindObjectsByType<PLAYER>(FindObjectsSortMode.None);
+        if (players.Length == 0) return;
+        float closestDist = float.MaxValue;
+        foreach (PLAYER player in players)
+        {
+            float d = Vector3.Distance(transform.position, player.transform.position);
+            if (d < closestDist)
+            {
+                closestDist = d;
+                currentPlayer = player.transform;
+            }
+        }
     }
+
+
 }

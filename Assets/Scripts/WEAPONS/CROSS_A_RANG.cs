@@ -26,9 +26,13 @@ public class CROSS_A_RANG : WEAPON
     [Header("Physics")]
     private float hitSphereRadius = 1f;
 
+    [Header("SFX")]
+    [SerializeField]
+    private AudioSource source;
+
     private void Awake()
     {
-        player_Trans = GetComponentInParent<PLAYER>().transform;
+        //player_Trans = GetComponentInParent<PLAYER>().transform;
 
         // Cache trail times uma única vez
         trailOriginalTimes = new float[trails.Length];
@@ -46,7 +50,7 @@ public class CROSS_A_RANG : WEAPON
             OnBoomerangReturned();
     }
 
-    private void OnDrawGizmos()
+    private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.yellow;
         Gizmos.DrawWireSphere(transform.position, hitSphereRadius);
@@ -62,8 +66,6 @@ public class CROSS_A_RANG : WEAPON
 
             for (int i = 0;i < cols.Length; i++)
             { 
-                print(cols[i].name);
-
                 IDamageable damageable = cols[i].gameObject.GetComponentInParent<IDamageable>();
 
                 if (damageable != null)
@@ -95,12 +97,16 @@ public class CROSS_A_RANG : WEAPON
 
         rotationTween.Kill();
         transform.SetParent(player_Trans);
-        transform.localPosition = Vector3.zero;
+        transform.localPosition = Vector3.up;
         g_Sprite.transform.rotation = Quaternion.Euler(50f, 0f, 0f);
+
+        source.Stop();
     }
 
     private IEnumerator ShootCoroutine()
     {
+        source.Play();
+
         isMoving = true;
 
         canShoot = false;

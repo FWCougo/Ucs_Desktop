@@ -22,8 +22,11 @@ public class INPUT_MANAGER : MonoBehaviour
     {
 
         InputActionPhase _phase = _context.phase;
-
-        dir = _context.ReadValue<Vector2>();
+        
+        if(_phase == InputActionPhase.Performed)
+        {
+            dir = _context.ReadValue<Vector2>();
+        }
 
         p_move.ReceiveMoveInput(dir, _phase);
     }
@@ -33,6 +36,14 @@ public class INPUT_MANAGER : MonoBehaviour
         if(_context.performed)
         {
             p_weapon.UseWeapon(dir);
+        }
+    }
+
+    public void onPause(InputAction.CallbackContext _context)
+    {
+        if (_context.performed)
+        {
+            GAME_MANAGER.Instance.PauseGame();
         }
     }
 
