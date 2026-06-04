@@ -48,7 +48,7 @@ public class MultipleTargetCamera : MonoBehaviour
 
         Vector3 newPosition = centerPoint + offset;
 
-        transform.position = Vector3.SmoothDamp(transform.position, newPosition, ref velocity, smoothTime);
+        transform.parent.position = Vector3.SmoothDamp(transform.parent.position, newPosition, ref velocity, smoothTime);
     }
 
     float GetGreatestDistance()

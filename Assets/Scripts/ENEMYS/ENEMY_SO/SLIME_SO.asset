@@ -16,4 +16,4 @@ MonoBehaviour:
   m_HP: 5
   m_DMG: 10
   m_SPEED: 5
-  blood_VFX: {fileID: 8194751847581766623, guid: 8e839c72d5c6331448f4507665f05410, type: 3}
+  blood_VFX: {fileID: 8194751847581766623, guid: 6f2af08bb140f6a40b9a150366ff4c49, type: 3}

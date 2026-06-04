@@ -293,7 +293,7 @@ BoxCollider:
   m_Enabled: 1
   serializedVersion: 3
   m_Size: {x: 3.92, y: 1.9104228, z: 1.8044167}
-  m_Center: {x: 0, y: 0.9552114, z: -0.762095}
+  m_Center: {x: 0, y: 1, z: 1}
 --- !u!1 &6847799657817330468
 GameObject:
   m_ObjectHideFlags: 0
@@ -477,6 +477,7 @@ MonoBehaviour:
   vibrato: 10
   randomness: 90
   source: {fileID: 5235052816556625379}
+  coin_clip: {fileID: 0}
   dmg: 0
   rotationSpeed: 0.5
   agent: {fileID: 2166596312368990790}
@@ -569,7 +570,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_MaskInteraction: 0
-  m_Sprite: {fileID: 923000932, guid: ee7080eda76ec824798a599fbfd81e5c, type: 3}
+  m_Sprite: {fileID: 696015160, guid: 4b5bfc809d94e9a40a7d9c8b64f0abf8, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
