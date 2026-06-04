@@ -6,6 +6,11 @@ public class LOOK_AT_CAM : MonoBehaviour
     [SerializeField] private bool x, y, z;
     [SerializeField] private Vector3 dir;
 
+    private void Awake()
+    {
+        target = FindFirstObjectByType<Camera>().transform;
+    }
+
     // Update is called once per frame
     void Update()
     {
@@ -19,9 +24,7 @@ public class LOOK_AT_CAM : MonoBehaviour
 
     void Rotate()
     {
-        Quaternion rotation = Quaternion.LookRotation(target.position,Vector3.right);
-
-
+        Quaternion rotation = Quaternion.LookRotation(target.position, Vector3.right);
         
         if (!x)
         {

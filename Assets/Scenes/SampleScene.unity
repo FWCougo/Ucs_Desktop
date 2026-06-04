@@ -167,7 +167,6 @@ MonoBehaviour:
   slime_prefab: {fileID: 6847799657817330468, guid: 32362f2a9798dd74884651909f964320, type: 3}
   monsters_prefabs: []
   spawnPoints:
-  - {fileID: 0}
   - {fileID: 1668368744}
   - {fileID: 1218276049}
   - {fileID: 1821387297}
@@ -677,7 +676,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 56118836}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -1758,7 +1757,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 131267361}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -2463,6 +2462,38 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 186804346}
   m_CullTransparentMesh: 1
+--- !u!1 &191752211
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 191752212}
+  m_Layer: 0
+  m_Name: Camera_Holder
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &191752212
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 191752211}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.6427876, y: 0, z: 0, w: 0.7660445}
+  m_LocalPosition: {x: 0, y: 20, z: -5}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 330585546}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 80, y: 0, z: 0}
 --- !u!1 &200218769
 GameObject:
   m_ObjectHideFlags: 0
@@ -3273,7 +3304,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 277527499}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -4059,7 +4090,7 @@ Camera:
     height: 1
   near clip plane: 0.1
   far clip plane: 5000
-  field of view: 60
+  field of view: 100
   orthographic: 0
   orthographic size: 20
   m_Depth: -1
@@ -4085,12 +4116,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 330585543}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.5735764, y: 0, z: 0, w: 0.8191521}
-  m_LocalPosition: {x: 0, y: 20, z: -10}
+  m_LocalRotation: {x: -0, y: 0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 191752212}
   m_LocalEulerAnglesHint: {x: 70, y: 0, z: 0}
 --- !u!114 &330585547
 MonoBehaviour:
@@ -4150,7 +4181,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: '::'
   targets:
   - {fileID: 1028909107}
-  offset: {x: 0, y: 20, z: -2}
+  offset: {x: 0, y: 20, z: -5}
   smoothTime: 0.15
   minZoom: 40
   maxZoom: 100
@@ -9569,7 +9600,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 913179079}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -15602,7 +15633,7 @@ MonoBehaviour:
   m_OverrideVoxelSize: 0
   m_VoxelSize: 0.16666667
   m_MinRegionArea: 2
-  m_NavMeshData: {fileID: 0}
+  m_NavMeshData: {fileID: 23800000, guid: 16a800e2620afaf4badf4f9ff79dbad0, type: 2}
   m_BuildHeightMesh: 0
 --- !u!4 &1733904190
 Transform:
@@ -19604,6 +19635,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 870200914808132174, guid: bdbb6e95b54503444a0ce2242ea61ce4, type: 3}
+      propertyPath: m_Sources.Array.data[0].sourceTransform
+      value: 
+      objectReference: {fileID: 191752212}
     - target: {fileID: 1384357533390912170, guid: bdbb6e95b54503444a0ce2242ea61ce4, type: 3}
       propertyPath: m_Sources.Array.data[0].sourceTransform
       value: 
@@ -19616,6 +19651,22 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 330585545}
+    - target: {fileID: 6098208617780726351, guid: bdbb6e95b54503444a0ce2242ea61ce4, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6098208617780726351, guid: bdbb6e95b54503444a0ce2242ea61ce4, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6098208617780726351, guid: bdbb6e95b54503444a0ce2242ea61ce4, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.86882895
+      objectReference: {fileID: 0}
+    - target: {fileID: 6098208617780726351, guid: bdbb6e95b54503444a0ce2242ea61ce4, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.49511233
+      objectReference: {fileID: 0}
     - target: {fileID: 7423296954714287289, guid: bdbb6e95b54503444a0ce2242ea61ce4, type: 3}
       propertyPath: m_Name
       value: PLAYER
@@ -19686,6 +19737,6 @@ SceneRoots:
   - {fileID: 1938493544}
   - {fileID: 2888319}
   - {fileID: 1733904190}
-  - {fileID: 330585546}
+  - {fileID: 191752212}
   - {fileID: 945883664}
   - {fileID: 1961239158}
