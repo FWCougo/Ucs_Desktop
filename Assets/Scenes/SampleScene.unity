@@ -19651,29 +19651,9 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 330585545}
-    - target: {fileID: 6098208617780726351, guid: bdbb6e95b54503444a0ce2242ea61ce4, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6098208617780726351, guid: bdbb6e95b54503444a0ce2242ea61ce4, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6098208617780726351, guid: bdbb6e95b54503444a0ce2242ea61ce4, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0.86882895
-      objectReference: {fileID: 0}
-    - target: {fileID: 6098208617780726351, guid: bdbb6e95b54503444a0ce2242ea61ce4, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0.49511233
-      objectReference: {fileID: 0}
     - target: {fileID: 7423296954714287289, guid: bdbb6e95b54503444a0ce2242ea61ce4, type: 3}
       propertyPath: m_Name
       value: PLAYER
-      objectReference: {fileID: 0}
-    - target: {fileID: 7423296954714287289, guid: bdbb6e95b54503444a0ce2242ea61ce4, type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7433012483689980034, guid: bdbb6e95b54503444a0ce2242ea61ce4, type: 3}
       propertyPath: m_LocalPosition.x

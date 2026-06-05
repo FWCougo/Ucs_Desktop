@@ -371,7 +371,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5066231260114082669}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: 0.86882895, z: 0.49511233, w: 0}
   m_LocalPosition: {x: 0, y: 0, z: 4.29}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -746,6 +746,7 @@ MonoBehaviour:
   dmgAClips:
   - {fileID: 8300000, guid: b6ebb7a0e7e8b9a49b1a5296b7160335, type: 3}
   - {fileID: 8300000, guid: 219c35cfba5a3fd4b8f8e9b7cea222d5, type: 3}
+  hp: 0
   canTakeDMG: 1
   isAlive: 1
   DrawHitBox: 0
@@ -763,6 +764,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: '::'
   characterController: {fileID: 2556009528634026933}
   player_SO: {fileID: 11400000, guid: 326277ac367159d44966d082d3fa5537, type: 2}
+  inputManager: {fileID: 0}
   speed: 15
   p_Sprite: {fileID: 1386625861878795455}
   g_Sprite: {fileID: 4738888546043788985}
@@ -784,6 +786,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::INPUT_MANAGER
   dir: {x: 0, y: 0}
+  mouseDir: {x: 0, y: 0}
   p_move: {fileID: 7008085216177644101}
   p_weapon: {fileID: 2755286371888828021}
 --- !u!114 &1199061607092345142
@@ -903,6 +906,22 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: 93b6da5f-44ca-4ea5-bc58-8b7333c8d9fc
     m_ActionName: 'Player/Escape[/Keyboard/escape]'
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 5140427551558869179}
+        m_TargetAssemblyTypeName: INPUT_MANAGER, Assembly-CSharp
+        m_MethodName: onMousePosition
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 58713167-aef6-4998-92b8-1e1dcc560164
+    m_ActionName: 'Player/MousePosition[/Mouse/position]'
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player

@@ -10,6 +10,8 @@ public class PLAYER_MOVE : MonoBehaviour
     private CharacterController characterController;
     [SerializeField]
     private PLAYER_SO player_SO;
+    [SerializeField]
+    private INPUT_MANAGER inputManager;
     [Header("MOVEMENT SPEED")]
     [SerializeField]
     private float speed;
@@ -41,8 +43,16 @@ public class PLAYER_MOVE : MonoBehaviour
         }
     }
     Tween skips;
+
+    private void Awake()
+    {
+        inputManager = GetComponent<INPUT_MANAGER>();
+    }
+
     private void Update()
     {
+        ChangeSpriteMouse();
+
         if (isMoving())
         {
             characterController.Move(dir * speed * Time.deltaTime);
@@ -53,10 +63,9 @@ public class PLAYER_MOVE : MonoBehaviour
         switch (inputPhase)
         {
             case InputActionPhase.Performed:
-                angleDir = (Mathf.Atan2(_dir.x, _dir.y) * Mathf.Rad2Deg);
                 dir.x = _dir.x;
                 dir.z = _dir.y;
-                ChangeSprite();
+                //ChangeSpriteArrow();
                 if (!isMoving())
                 {
                     skips = p_Sprite.transform.DOLocalMoveY(skipsHeight, skipsSpeed).SetLoops(-1, LoopType.Yoyo);
@@ -71,8 +80,38 @@ public class PLAYER_MOVE : MonoBehaviour
         }
 
     }
-    public void ChangeSprite()
+    public void ChangeSpriteMouse()
     {
+        Vector3 _mouseDir = inputManager.MouseDir;
+        angleDir = (Mathf.Atan2(_mouseDir.x, _mouseDir.y) * Mathf.Rad2Deg);
+
+        if (_mouseDir.x < 0)
+        {
+            p_Sprite.flipX = true;
+            g_Sprite.flipX = true;
+        }
+        else
+        {
+            p_Sprite.flipX = false;
+            g_Sprite.flipX = false;
+        }
+        if (angleDir == 0)
+        {
+            p_Sprite.sprite = player_SO.backSprite;
+        }
+        else if (angleDir == 180)
+        {
+            p_Sprite.sprite = player_SO.frontSprite;
+        }
+        else
+        {
+            p_Sprite.sprite = player_SO.sideSprite;
+        }
+    }
+    public void ChangeSpriteArrow()
+    {
+        angleDir = (Mathf.Atan2(dir.x, dir.z) * Mathf.Rad2Deg);
+
         if (dir.x < 0)
         {
             p_Sprite.flipX = true;

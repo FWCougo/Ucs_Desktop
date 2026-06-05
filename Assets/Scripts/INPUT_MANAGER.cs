@@ -8,6 +8,7 @@ public class INPUT_MANAGER : MonoBehaviour
 
     [SerializeField]
     private Vector2 mouseDir;
+    public Vector2 MouseDir => mouseDir;
 
     [SerializeField] private PLAYER_MOVE p_move;
     [SerializeField] private WEAPON p_weapon;
@@ -34,13 +35,31 @@ public class INPUT_MANAGER : MonoBehaviour
         p_move.ReceiveMoveInput(dir, _phase);
     }
 
-    public void onAttack(InputAction.CallbackContext _context)
-    { 
+    public void onMousePosition(InputAction.CallbackContext _context)
+    {
+        //Vector2 mouseScreenPosition = Mouse.current.position.ReadValue();
+        Vector2 mouseScreenPosition = _context.ReadValue<Vector2>();
 
+        RaycastHit hit;
+        Ray ray = Camera.main.ScreenPointToRay(mouseScreenPosition);
+        Vector3 mouseWorldPos = Vector3.zero;
 
-        if(_context.performed)
+        if (Physics.Raycast(ray, out hit))
         {
-            p_weapon.UseWeapon(dir);
+            mouseWorldPos = hit.point;
+        }
+
+        Vector3 direction = (mouseWorldPos - transform.position).normalized;
+
+        mouseDir = new Vector2(direction.x, direction.z);
+    }
+
+    public void onAttack(InputAction.CallbackContext _context)
+    {        
+
+        if (_context.performed)
+        {
+            p_weapon.UseWeapon(mouseDir);
         }
     }
 
