@@ -19,6 +19,7 @@ public class PLAYER : MonoBehaviour
     [SerializeField] private AudioSource combatASource;
     [SerializeField] private AudioClip[] dmgAClips;
 
+    [SerializeField]
     private float hp;
     [SerializeField]
     private bool canTakeDMG = true;

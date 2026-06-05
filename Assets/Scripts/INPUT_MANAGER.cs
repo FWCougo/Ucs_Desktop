@@ -6,6 +6,9 @@ public class INPUT_MANAGER : MonoBehaviour
     [SerializeField]
     private Vector2 dir;
 
+    [SerializeField]
+    private Vector2 mouseDir;
+
     [SerializeField] private PLAYER_MOVE p_move;
     [SerializeField] private WEAPON p_weapon;
 
@@ -32,7 +35,9 @@ public class INPUT_MANAGER : MonoBehaviour
     }
 
     public void onAttack(InputAction.CallbackContext _context)
-    {
+    { 
+
+
         if(_context.performed)
         {
             p_weapon.UseWeapon(dir);
