@@ -24,6 +24,7 @@ public class GAME_MANAGER : MonoBehaviour
 
     private void Start()
     {
+        Cursor.visible = true;
         killCount = 0;
         kill_TXT.text = "KILLS: " + killCount;
     }
@@ -36,7 +37,8 @@ public class GAME_MANAGER : MonoBehaviour
     }
 
     public void StartGame() 
-    { 
+    {
+        Cursor.visible = false;
         player_1.SetActive(true);
         SPAWN_MANAGER.Instance.StartSpawning();
     }
@@ -60,7 +62,7 @@ public class GAME_MANAGER : MonoBehaviour
         if(isPaused)
         {
             Time.timeScale = 0;
-
+            Cursor.visible = true;
             MENU_MANAGER.Instance.OpenMenu("PAUSE_MENU");
         }
         else

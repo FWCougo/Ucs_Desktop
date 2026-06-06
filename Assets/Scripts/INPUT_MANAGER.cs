@@ -6,13 +6,15 @@ public class INPUT_MANAGER : MonoBehaviour
     [SerializeField]
     private Vector2 dir;
 
+    public Vector3 mouseWorldPos;
+
     [SerializeField]
     private Vector2 mouseDir;
     public Vector2 MouseDir => mouseDir;
 
     [SerializeField] private PLAYER_MOVE p_move;
     [SerializeField] private WEAPON p_weapon;
-
+    [SerializeField] private GameObject test;
     #region Get Set
 
     public Vector2 Dir { get { return dir; } }
@@ -37,12 +39,11 @@ public class INPUT_MANAGER : MonoBehaviour
 
     public void onMousePosition(InputAction.CallbackContext _context)
     {
-        //Vector2 mouseScreenPosition = Mouse.current.position.ReadValue();
         Vector2 mouseScreenPosition = _context.ReadValue<Vector2>();
 
         RaycastHit hit;
         Ray ray = Camera.main.ScreenPointToRay(mouseScreenPosition);
-        Vector3 mouseWorldPos = Vector3.zero;
+        mouseWorldPos = Vector3.zero;
 
         if (Physics.Raycast(ray, out hit))
         {
@@ -56,6 +57,7 @@ public class INPUT_MANAGER : MonoBehaviour
 
     public void onAttack(InputAction.CallbackContext _context)
     {        
+        Instantiate(test,mouseWorldPos,Quaternion.identity);
 
         if (_context.performed)
         {

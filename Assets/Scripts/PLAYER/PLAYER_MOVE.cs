@@ -17,6 +17,8 @@ public class PLAYER_MOVE : MonoBehaviour
     private float speed;
     [Header("SPRITES")]
     [SerializeField]
+    private SpriteRenderer p_Aim_Sprite;
+    [SerializeField]
     private SpriteRenderer p_Sprite;
     [SerializeField]
     private SpriteRenderer g_Sprite;
@@ -49,10 +51,15 @@ public class PLAYER_MOVE : MonoBehaviour
         inputManager = GetComponent<INPUT_MANAGER>();
     }
 
+    private void Start()
+    {
+        p_Aim_Sprite.gameObject.SetActive(true);
+    }
+
     private void Update()
     {
         ChangeSpriteMouse();
-
+        SetAim();
         if (isMoving())
         {
             characterController.Move(dir * speed * Time.deltaTime);
@@ -80,7 +87,13 @@ public class PLAYER_MOVE : MonoBehaviour
         }
 
     }
-    public void ChangeSpriteMouse()
+    void SetAim()
+    {
+        Vector3 _aimDir = new Vector3(inputManager.mouseWorldPos.x, 0.1f, inputManager.mouseWorldPos.z); 
+
+        p_Aim_Sprite.transform.position = _aimDir;
+    }
+    void ChangeSpriteMouse()
     {
         Vector3 _mouseDir = inputManager.MouseDir;
         angleDir = (Mathf.Atan2(_mouseDir.x, _mouseDir.y) * Mathf.Rad2Deg);
@@ -95,11 +108,11 @@ public class PLAYER_MOVE : MonoBehaviour
             p_Sprite.flipX = false;
             g_Sprite.flipX = false;
         }
-        if (angleDir == 0)
+        if (angleDir > -45f && angleDir < 45f)
         {
             p_Sprite.sprite = player_SO.backSprite;
         }
-        else if (angleDir == 180)
+        else if (angleDir > 135f || angleDir < -135f)
         {
             p_Sprite.sprite = player_SO.frontSprite;
         }
@@ -108,7 +121,7 @@ public class PLAYER_MOVE : MonoBehaviour
             p_Sprite.sprite = player_SO.sideSprite;
         }
     }
-    public void ChangeSpriteArrow()
+    void ChangeSpriteArrow()
     {
         angleDir = (Mathf.Atan2(dir.x, dir.z) * Mathf.Rad2Deg);
 
