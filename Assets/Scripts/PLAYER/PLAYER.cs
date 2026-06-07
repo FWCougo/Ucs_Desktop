@@ -12,27 +12,34 @@ public class PLAYER : MonoBehaviour
 
     [Header("HP")]
     [SerializeField] private float maxHp = 100f;
+    [SerializeField] private float hp;
     [SerializeField] private Image hpIMG;
     [SerializeField] private float invincibilityDuration = 1f;
+    [SerializeField] private bool canTakeDMG = true;
+
+    public float HP => hp;
+
+    public bool isAlive = true;
 
     [Header("Audio")]
     [SerializeField] private AudioSource combatASource;
     [SerializeField] private AudioClip[] dmgAClips;
 
-    [SerializeField]
-    private float hp;
-    [SerializeField]
-    private bool canTakeDMG = true;
-
-    public float HP => hp;
-
-    public bool isAlive = true;
+    
 
     private void Start()
     {
         hp = maxHp;
         isAlive = true;
     }
+
+    // ─── Setter ─────────────────────────────────────────────────────
+    public void ChangeMaxHP(float _maxHP)
+    {
+        maxHp = _maxHP;
+        hp = maxHp;
+    }
+
 
     // ─── Physics ─────────────────────────────────────────────────────
 
@@ -56,17 +63,14 @@ public class PLAYER : MonoBehaviour
         // Pega o primeiro inimigo válido encontrado
         foreach (Collider hit in hits)
         {
-            if (hit.CompareTag("SLIMEBALL"))
-            {
-                StartCoroutine(TakeDMG(5));
-                break;
-            }
+            IGiveDamage giveDMG = hit.GetComponentInParent<IGiveDamage>();
+            if(giveDMG == null) continue;
 
-            ENEMY enemy = hit.GetComponentInParent<ENEMY>();
-            if (enemy == null) continue;
-            if (!enemy.isAlive) continue;
+            float _DMG = giveDMG.Damage;
+            if (_DMG == 0) continue;
 
-            StartCoroutine(TakeDMG(enemy.DMG));
+            StartCoroutine(TakeDMG(_DMG));
+            
             break; // Um dano por frame é suficiente
         }
     }
@@ -105,8 +109,6 @@ public class PLAYER : MonoBehaviour
         isAlive = false;
         GAME_MANAGER.Instance.GAMEOVER();
     }
-
-
 
 
 #if UNITY_EDITOR

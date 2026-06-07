@@ -9,19 +9,14 @@ public class PLAYER_MOVE : MonoBehaviour
     [SerializeField]
     private CharacterController characterController;
     [SerializeField]
-    private PLAYER_SO player_SO;
-    [SerializeField]
     private INPUT_MANAGER inputManager;
     [Header("MOVEMENT SPEED")]
     [SerializeField]
     private float speed;
     [Header("SPRITES")]
-    [SerializeField]
-    private SpriteRenderer p_Aim_Sprite;
-    [SerializeField]
-    private SpriteRenderer p_Sprite;
-    [SerializeField]
-    private SpriteRenderer g_Sprite;
+    [SerializeField] private SpriteRenderer p_Aim_Sprite;
+    [SerializeField] private SpriteRenderer p_Sprite;
+    [SerializeField] private Sprite frontSprite, sideSprite, backSprite;
     [Header("DIRECTION")]
     [SerializeField]
     private float angleDir;
@@ -56,6 +51,13 @@ public class PLAYER_MOVE : MonoBehaviour
         p_Aim_Sprite.gameObject.SetActive(true);
     }
 
+    public void SetSprites(PLAYER_SO _pSO)
+    {
+        backSprite = _pSO.backSprite;
+        frontSprite = _pSO.frontSprite;
+        sideSprite = _pSO.sideSprite;
+    }
+
     private void Update()
     {
         ChangeSpriteMouse();
@@ -64,6 +66,10 @@ public class PLAYER_MOVE : MonoBehaviour
         {
             characterController.Move(dir * speed * Time.deltaTime);
         }
+    }
+    public void ChangeSpeed(float _speed) 
+    { 
+        speed = _speed;
     }
     public void ReceiveMoveInput(Vector2 _dir, InputActionPhase inputPhase)
     {
@@ -101,24 +107,22 @@ public class PLAYER_MOVE : MonoBehaviour
         if (_mouseDir.x < 0)
         {
             p_Sprite.flipX = true;
-            g_Sprite.flipX = true;
         }
         else
         {
             p_Sprite.flipX = false;
-            g_Sprite.flipX = false;
         }
         if (angleDir > -45f && angleDir < 45f)
         {
-            p_Sprite.sprite = player_SO.backSprite;
+            p_Sprite.sprite = backSprite;
         }
         else if (angleDir > 135f || angleDir < -135f)
         {
-            p_Sprite.sprite = player_SO.frontSprite;
+            p_Sprite.sprite = frontSprite;
         }
         else
         {
-            p_Sprite.sprite = player_SO.sideSprite;
+            p_Sprite.sprite = sideSprite;
         }
     }
     void ChangeSpriteArrow()
@@ -128,24 +132,22 @@ public class PLAYER_MOVE : MonoBehaviour
         if (dir.x < 0)
         {
             p_Sprite.flipX = true;
-            g_Sprite.flipX = true;
         }
         else
         {
             p_Sprite.flipX = false;
-            g_Sprite.flipX = false;
         }
         if (angleDir == 0)
         {
-            p_Sprite.sprite = player_SO.backSprite;
+            p_Sprite.sprite = backSprite;
         }
         else if (angleDir == 180)
         {
-            p_Sprite.sprite = player_SO.frontSprite;
+            p_Sprite.sprite = frontSprite;
         }
         else
         {
-            p_Sprite.sprite = player_SO.sideSprite;
+            p_Sprite.sprite = sideSprite;
         }
     }
     public bool isMoving()

@@ -2,7 +2,7 @@ using System.Collections;
 using UnityEngine;
 using DG.Tweening;
 
-public class BULLET : MonoBehaviour
+public class BULLET : MonoBehaviour, IGiveDamage
 {
     [SerializeField] private float bulletSpeed = 20f;
 
@@ -10,7 +10,11 @@ public class BULLET : MonoBehaviour
 
     [SerializeField] private Transform bulletSprite;
 
+    [SerializeField] private float DMG = 5;
+
     float normalPos;
+
+    public float Damage => DMG;
 
     private void Start()
     {

@@ -13,14 +13,41 @@ public class INPUT_MANAGER : MonoBehaviour
     public Vector2 MouseDir => mouseDir;
 
     [SerializeField] private PLAYER_MOVE p_move;
-    [SerializeField] private WEAPON p_weapon;
-    [SerializeField] private GameObject test;
+
+    [SerializeField] private LayerMask groundLayer;
+
+    [SerializeField] PLAYER_WEAPONS p_weapon;
     #region Get Set
 
     public Vector2 Dir { get { return dir; } }
 
     #endregion
 
+
+    private void LateUpdate()
+    {
+        UpdateMousePosition();
+    }
+
+    void UpdateMousePosition()
+    {
+        Vector2 mouseScreenPosition = Mouse.current.position.ReadValue();
+
+        RaycastHit hit;
+        Ray ray = Camera.main.ScreenPointToRay(mouseScreenPosition);
+        mouseWorldPos = Vector3.zero;
+
+        if (Physics.Raycast(ray, out hit, Mathf.Infinity, groundLayer))
+        {
+            
+            mouseWorldPos = hit.point;
+            
+        }
+
+        Vector3 direction = (mouseWorldPos - transform.position).normalized;
+
+        mouseDir = new Vector2(direction.x, direction.z);
+    }
 
     #region InputActions
 
@@ -37,28 +64,9 @@ public class INPUT_MANAGER : MonoBehaviour
         p_move.ReceiveMoveInput(dir, _phase);
     }
 
-    public void onMousePosition(InputAction.CallbackContext _context)
-    {
-        Vector2 mouseScreenPosition = _context.ReadValue<Vector2>();
-
-        RaycastHit hit;
-        Ray ray = Camera.main.ScreenPointToRay(mouseScreenPosition);
-        mouseWorldPos = Vector3.zero;
-
-        if (Physics.Raycast(ray, out hit))
-        {
-            mouseWorldPos = hit.point;
-        }
-
-        Vector3 direction = (mouseWorldPos - transform.position).normalized;
-
-        mouseDir = new Vector2(direction.x, direction.z);
-    }
 
     public void onAttack(InputAction.CallbackContext _context)
-    {        
-        Instantiate(test,mouseWorldPos,Quaternion.identity);
-
+    {       
         if (_context.performed)
         {
             p_weapon.UseWeapon(mouseDir);

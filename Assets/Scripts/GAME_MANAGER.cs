@@ -69,7 +69,7 @@ public class GAME_MANAGER : MonoBehaviour
         {
 
             Time.timeScale = 1;
-
+            Cursor.visible = false;
             MENU_MANAGER.Instance.OpenMenu("IN-GAME_MENU");
         }
         

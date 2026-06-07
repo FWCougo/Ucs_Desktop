@@ -30,9 +30,9 @@ public class CROSS_A_RANG : WEAPON
     [SerializeField]
     private AudioSource source;
 
-    private void Awake()
+    private void Start()
     {
-        //player_Trans = GetComponentInParent<PLAYER>().transform;
+        player_Trans = GetComponentInParent<PLAYER>().transform;
 
         // Cache trail times uma única vez
         trailOriginalTimes = new float[trails.Length];
