@@ -11,9 +11,16 @@ public class GUN : WEAPON
 
     public bool canShoot = true;
 
+    [SerializeField]
+    private AudioSource source;
+    [SerializeField]
+    private AudioClip clip;
+
     private void Start()
     {
         Reload();
+        clip = gun_so.shotClip;
+
     }
 
     public override void UseWeapon(Vector3 dir)
@@ -25,8 +32,14 @@ public class GUN : WEAPON
     {
         if (currentAmmo <= 0)
         {
+
             canShoot = false;
-            StartCoroutine(ReloadCoroutine());
+            
+            PLAYER_WEAPONS _pWeapon = GetComponentInParent<PLAYER_WEAPONS>();
+            _pWeapon.ChangeBackToMain();
+            Destroy(gameObject);
+            
+            //StartCoroutine(ReloadCoroutine());
         }
         else
         {
@@ -58,6 +71,8 @@ public class GUN : WEAPON
 
     IEnumerator ShootCoroutine()
     {
+        source.PlayOneShot(clip);
+
         canShoot = false;
 
         print("Shooting " + gun_so.itemName);

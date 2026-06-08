@@ -36,9 +36,7 @@ public class SLIME_ENEMY : ENEMY
 
         InstantiateBullets();
 
-        StartCoroutine(SlimeMovement());
-
-        
+        StartCoroutine(SlimeMovement());        
 
     }
 

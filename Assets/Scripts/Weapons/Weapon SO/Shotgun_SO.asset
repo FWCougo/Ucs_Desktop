@@ -18,5 +18,6 @@ MonoBehaviour:
   damage: 3
   maxAmmo: 8
   realoadTime: 3
-  bulletPrefab: {fileID: -4763784196938853654, guid: 0d02336b24c8fea4085f3d091ddc8884, type: 3}
+  bulletPrefab: {fileID: 2686044816604900693, guid: 5f9e1e2a979468b4b88e597526ee3f1b, type: 3}
   bulletLifeSpan: 0.3
+  shotClip: {fileID: 8300000, guid: 83967bd8ed153ce4bbd55802b066f942, type: 3}

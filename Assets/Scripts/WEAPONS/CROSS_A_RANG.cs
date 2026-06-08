@@ -40,6 +40,16 @@ public class CROSS_A_RANG : WEAPON
             trailOriginalTimes[i] = trails[i].time;
     }
 
+    private void OnEnable()
+    {
+        if(player_Trans == null)
+        {
+            player_Trans = GetComponentInParent<PLAYER>().transform;
+        }
+
+        OnBoomerangReturned();
+    }
+
     private void Update()
     {
         if (!isReturning) return;

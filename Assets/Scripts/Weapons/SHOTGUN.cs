@@ -23,7 +23,7 @@ public class SHOTGUN : GUN
         base.UseWeapon(dir);
     }
 
-    public Vector2 RandomizeDirection(Vector2 direction, float spreadAngle)
+    public Vector3 RandomizeDirection(Vector3 direction, float spreadAngle)
     {
         // Converte a direção para ângulo em graus
         float baseAngle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
@@ -34,18 +34,19 @@ public class SHOTGUN : GUN
         float finalAngle = (baseAngle + randomOffset) * Mathf.Deg2Rad;
 
         // Converte de volta para vetor
-        return new Vector2(Mathf.Cos(finalAngle), Mathf.Sin(finalAngle));
+        return new Vector3(Mathf.Cos(finalAngle), 0, Mathf.Sin(finalAngle));
     }
 
     public void MultipleShot()
     {
-        print("Multiple Shot");
         if (canShoot)
         {
+            CAMERA_SHAKE.Instance.ShakeDefault();
+
             for (int i = 0; i < 5; i++)
             {
-                BULLET _bullet = Instantiate(gun_so.bulletPrefab, boca_transform.position, Quaternion.identity).GetComponent<BULLET>();
-                Vector2 spreadDir = RandomizeDirection(direction, 25f);
+                BULLET_PLAYER _bullet = Instantiate(gun_so.bulletPrefab, boca_transform.position, Quaternion.identity).GetComponent<BULLET_PLAYER>();
+                Vector3 spreadDir = RandomizeDirection(direction, 40f);
                 _bullet.ReceiveDirection(spreadDir, gun_so.bulletLifeSpan);
             }
         }

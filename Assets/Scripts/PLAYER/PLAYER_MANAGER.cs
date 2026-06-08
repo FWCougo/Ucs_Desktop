@@ -12,6 +12,12 @@ public class PLAYER_MANAGER : MonoBehaviour
     [SerializeField]
     private PLAYER_WEAPONS p_Weapon;
 
+    [SerializeField]
+    private PICKUP[] pickups;
+
+
+    public PLAYER_WEAPONS PLAYER_WEAPONS { get { return p_Weapon; } }
+
     private void Awake()
     {
         p_Move.ChangeSpeed(player_SO.speed);

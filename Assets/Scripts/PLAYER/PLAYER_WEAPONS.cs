@@ -19,6 +19,8 @@ public class PLAYER_WEAPONS : MonoBehaviour
     }
     public void SetMainWeapon(WEAPON _w)
     {
+        if (mainGun == _w) { return; }
+
         WEAPON _weapon = Instantiate(_w,handTransform);
         _weapon.transform.localPosition = Vector3.zero;
 
@@ -26,9 +28,25 @@ public class PLAYER_WEAPONS : MonoBehaviour
         currentGun = mainGun;
 
     }
-    public void ChangeWeapon(WEAPON _w)
+    public bool SetSecondWeapon(WEAPON _w)
     {
-        currentGun = _w;             
+        if(secondGun == _w) { return false; }
+
+        currentGun.gameObject.SetActive(false);
+
+        WEAPON _weapon = Instantiate(_w, handTransform);
+        _weapon.transform.localPosition = Vector3.zero;
+
+        secondGun = _weapon;
+        currentGun = secondGun;
+
+        return true;
+    }
+    public void ChangeBackToMain()
+    {
+        currentGun.gameObject.SetActive(false);
+        currentGun = mainGun;
+        currentGun.gameObject.SetActive(true);
     }
 
     public void UseWeapon(Vector2 _mouseDir)
