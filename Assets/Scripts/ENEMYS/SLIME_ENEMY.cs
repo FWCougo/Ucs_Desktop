@@ -136,15 +136,11 @@ public class SLIME_ENEMY : ENEMY
 
     public override void Die()
     {
+        base.Die();
 
-        source.PlayOneShot(coin_clip);
-        
+        source.PlayOneShot(coin_clip);        
 
         agent.isStopped = true;
-        isAlive = false;
-
-        bloodSplatter_GO.transform.SetParent(null);
-        bloodSplatter_GO.SetActive(true);
 
         Vector3 rot = enemySprite.transform.rotation.eulerAngles;
         rot.x = 89;

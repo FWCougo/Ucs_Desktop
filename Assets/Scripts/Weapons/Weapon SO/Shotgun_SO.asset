@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Shotgun_SO
   m_EditorClassIdentifier: Assembly-CSharp::GUN_SO
   itemName: Shotgun
-  itemSprite: {fileID: -1055791482, guid: 992b5a339b33af34389e29d18f173e7c, type: 3}
+  itemSprite: {fileID: -849249960, guid: 0683699de7e13714abb0d2492d7e2126, type: 3}
   cadency: 0.4
   damage: 3
   maxAmmo: 8

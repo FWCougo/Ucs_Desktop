@@ -860,6 +860,7 @@ MonoBehaviour:
   dmgAClips:
   - {fileID: 8300000, guid: b6ebb7a0e7e8b9a49b1a5296b7160335, type: 3}
   - {fileID: 8300000, guid: 219c35cfba5a3fd4b8f8e9b7cea222d5, type: 3}
+  eatClip: {fileID: 8300000, guid: 8b6f3a63a297c0f4bb34b4cf419a1fe7, type: 3}
   DrawHitBox: 0
 --- !u!114 &7008085216177644101
 MonoBehaviour:

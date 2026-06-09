@@ -46,6 +46,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 023ea3acb5bf34a4591d98370117c9b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SHOTGUN
+  isMainWeapon: 0
   gun_so: {fileID: 11400000, guid: 7a9e0423ca92df24b8a15555162b8d88, type: 2}
   currentAmmo: 0
   canShoot: 1
@@ -233,7 +234,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 1
   m_MaskInteraction: 0
-  m_Sprite: {fileID: -1055791482, guid: 992b5a339b33af34389e29d18f173e7c, type: 3}
+  m_Sprite: {fileID: -849249960, guid: 0683699de7e13714abb0d2492d7e2126, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

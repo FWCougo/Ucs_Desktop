@@ -63,10 +63,10 @@ public class ENEMY : MonoBehaviour, IDamageable, IGiveDamage
     }
     public virtual void Die()
     {
+        dmg = 0;
         isAlive = false;
         bloodSplatter_GO.transform.SetParent(null);
         bloodSplatter_GO.SetActive(true);
-        gameObject.SetActive(false);
     }
     // ─── VFX ────────────────────────────────────────────────────────
     private void InstantiateBloodVFX()

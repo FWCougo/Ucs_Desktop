@@ -22,13 +22,12 @@ public class STALKER_ENEMY : ENEMY
 
     public override void Die()
     {
+        base.Die();
+
         source.PlayOneShot(coin_clip);
 
         agent.speed = 0;
         agent.SetDestination(transform.position);
-        isAlive = false;
-        bloodSplatter_GO.transform.SetParent(null);
-        bloodSplatter_GO.SetActive(true);
         walkTween.Kill();
         Vector3 rot = enemySprite.transform.rotation.eulerAngles;
         rot.x = 89;

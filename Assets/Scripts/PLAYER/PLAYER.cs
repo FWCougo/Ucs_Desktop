@@ -24,7 +24,7 @@ public class PLAYER : MonoBehaviour
     [Header("Audio")]
     [SerializeField] private AudioSource combatASource;
     [SerializeField] private AudioClip[] dmgAClips;
-
+    [SerializeField] private AudioClip eatClip;
     
 
     private void Start()
@@ -40,6 +40,14 @@ public class PLAYER : MonoBehaviour
         hp = maxHp;
 
         UpdateLifeIMG();
+    }
+
+    public void EatFood(float _hp)
+    {
+        combatASource.pitch = 1;
+        combatASource.PlayOneShot(eatClip);
+
+        ReceiveHealth(_hp);
     }
 
     public void ReceiveHealth(float _hp)
@@ -64,8 +72,8 @@ public class PLAYER : MonoBehaviour
 
     private IEnumerator FlashHEAL()
     {
-        p_sprite.color = Color.limeGreen;
-        yield return new WaitForSeconds(0.15f);
+        p_sprite.color = Color.springGreen;
+        yield return new WaitForSeconds(0.1f);
         p_sprite.color = Color.white;
     }
 
