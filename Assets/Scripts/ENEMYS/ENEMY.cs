@@ -1,8 +1,7 @@
 ﻿using DG.Tweening;
 using System.Collections;
 using UnityEngine;
-using static Unity.VisualScripting.Member;
-public class ENEMY : MonoBehaviour, IDamageable
+public class ENEMY : MonoBehaviour, IDamageable, IGiveDamage
 {
     public bool isAlive = true;
     public ENEMY_SO enemy_SO;
@@ -30,6 +29,8 @@ public class ENEMY : MonoBehaviour, IDamageable
     {
         get { return dmg; }
     }
+
+    float IGiveDamage.Damage { get => DMG; }
 
     private void Awake()
     {

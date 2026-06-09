@@ -6,15 +6,48 @@ public class INPUT_MANAGER : MonoBehaviour
     [SerializeField]
     private Vector2 dir;
 
-    [SerializeField] private PLAYER_MOVE p_move;
-    [SerializeField] private WEAPON p_weapon;
+    public Vector3 mouseWorldPos;
 
+    [SerializeField]
+    private Vector2 mouseDir;
+    public Vector2 MouseDir => mouseDir;
+
+    [SerializeField] private PLAYER_MOVE p_move;
+
+    [SerializeField] private LayerMask groundLayer;
+
+    [SerializeField] PLAYER_WEAPONS p_weapon;
     #region Get Set
 
     public Vector2 Dir { get { return dir; } }
 
     #endregion
 
+
+    private void LateUpdate()
+    {
+        UpdateMousePosition();
+    }
+
+    void UpdateMousePosition()
+    {
+        Vector2 mouseScreenPosition = Mouse.current.position.ReadValue();
+
+        RaycastHit hit;
+        Ray ray = Camera.main.ScreenPointToRay(mouseScreenPosition);
+        mouseWorldPos = Vector3.zero;
+
+        if (Physics.Raycast(ray, out hit, Mathf.Infinity, groundLayer))
+        {
+            
+            mouseWorldPos = hit.point;
+            
+        }
+
+        Vector3 direction = (mouseWorldPos - transform.position).normalized;
+
+        mouseDir = new Vector2(direction.x, direction.z);
+    }
 
     #region InputActions
 
@@ -31,11 +64,12 @@ public class INPUT_MANAGER : MonoBehaviour
         p_move.ReceiveMoveInput(dir, _phase);
     }
 
+
     public void onAttack(InputAction.CallbackContext _context)
-    {
-        if(_context.performed)
+    {       
+        if (_context.performed)
         {
-            p_weapon.UseWeapon(dir);
+            p_weapon.UseWeapon(mouseDir);
         }
     }
 

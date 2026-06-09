@@ -2,7 +2,7 @@ using System.Collections;
 using UnityEngine;
 using DG.Tweening;
 
-public class BULLET : MonoBehaviour, IGiveDamage
+public class BULLET_PLAYER : MonoBehaviour
 {
     [SerializeField] private float bulletSpeed = 20f;
 
@@ -24,9 +24,11 @@ public class BULLET : MonoBehaviour, IGiveDamage
     public void ReceiveDirection(Vector3 dir, float lifeSpan)
     {
         bulletDir = dir; // dir já deve chegar normalizado de quem chama
-        StartCoroutine(Disable(lifeSpan));
+        //StartCoroutine(Disable(lifeSpan));
 
-        bulletSprite.DOLocalMoveY(normalPos+1f, lifeSpan / 2).SetEase(Ease.OutQuad)
+        Destroy(gameObject, lifeSpan);
+
+        bulletSprite.DOLocalMoveY(normalPos + 1f, lifeSpan / 2).SetEase(Ease.OutQuad)
             .OnComplete(() =>
             {
                 bulletSprite.DOLocalMoveY(normalPos, lifeSpan / 2).SetEase(Ease.InQuad);

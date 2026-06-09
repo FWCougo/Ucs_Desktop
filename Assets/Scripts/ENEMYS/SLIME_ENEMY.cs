@@ -34,9 +34,9 @@ public class SLIME_ENEMY : ENEMY
         agent.updateRotation = false;
         agent.speed = enemy_SO.m_SPEED;
 
-        StartCoroutine(SlimeMovement());
-
         InstantiateBullets();
+
+        StartCoroutine(SlimeMovement());        
 
     }
 

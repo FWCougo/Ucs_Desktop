@@ -81,7 +81,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_MaskInteraction: 0
-  m_Sprite: {fileID: -1687725227, guid: 460f58dd4a0e3204fb4bb4ccf3c40fdd, type: 3}
+  m_Sprite: {fileID: 605340806, guid: 06c8ef11e738c2f4cba3ce873eb9c4a1, type: 3}
   m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -172,7 +172,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 1
   m_MaskInteraction: 0
-  m_Sprite: {fileID: -1687725227, guid: 460f58dd4a0e3204fb4bb4ccf3c40fdd, type: 3}
+  m_Sprite: {fileID: 605340806, guid: 06c8ef11e738c2f4cba3ce873eb9c4a1, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -192,10 +192,10 @@ GameObject:
   m_Component:
   - component: {fileID: 6627562201901546186}
   - component: {fileID: 8218372212454794776}
-  - component: {fileID: 3972601054749222653}
   - component: {fileID: 2106961319160129788}
+  - component: {fileID: 2686044816604900693}
   m_Layer: 0
-  m_Name: SLIME_SHOT
+  m_Name: SHOTGUN_SHOT
   m_TagString: SLIMEBALL
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -315,20 +315,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &3972601054749222653
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8316543698884249147}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 195204c1d95510948ae2a5b145ec5044, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::BULLET
-  bulletSpeed: 20
-  bulletSprite: {fileID: 8554402568291401976}
 --- !u!65 &2106961319160129788
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -350,3 +336,18 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0.45, z: 0}
+--- !u!114 &2686044816604900693
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8316543698884249147}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e97af6a3e6c5dcf4eb61c9acec334e71, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BULLET_PLAYER
+  bulletSpeed: 60
+  bulletSprite: {fileID: 8554402568291401976}
+  DMG: 5
