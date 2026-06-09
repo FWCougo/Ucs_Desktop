@@ -43,6 +43,10 @@ public class PLAYER_WEAPONS : MonoBehaviour
     public bool SetSecondWeapon(WEAPON _w)
     {
         if(secondGun == _w) { return false; }
+
+        combatASource.pitch = 2;
+        combatASource.PlayOneShot(gettingGunClip);
+
         ammoUIConteiner.SetActive(true);
         ammoFillImg.fillAmount = 1;
 

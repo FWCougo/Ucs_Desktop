@@ -904,6 +904,8 @@ MonoBehaviour:
   handTransform: {fileID: 4638504422627568202}
   ammoUIConteiner: {fileID: 3533681268791740540}
   ammoFillImg: {fileID: 1033517083583621628}
+  combatASource: {fileID: 1976706891773781710}
+  gettingGunClip: {fileID: 8300000, guid: ea56778f0b9ebad45b1c399daef94891, type: 3}
 --- !u!114 &5140427551558869179
 MonoBehaviour:
   m_ObjectHideFlags: 0

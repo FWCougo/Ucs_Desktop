@@ -111,6 +111,7 @@ public class PLAYER : MonoBehaviour
         UpdateLifeIMG();
 
         CAMERA_SHAKE.Instance.ShakeMedium();
+        combatASource.pitch = 1;
         combatASource.PlayOneShot(dmgAClips[Random.Range(0, dmgAClips.Length)]);
         StartCoroutine(FlashDMG());
 
