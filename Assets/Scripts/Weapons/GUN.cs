@@ -16,11 +16,14 @@ public class GUN : WEAPON
     [SerializeField]
     private AudioClip clip;
 
+    private PLAYER_WEAPONS p_WEAPON;
+
     private void Start()
     {
+        p_WEAPON = GetComponentInParent<PLAYER_WEAPONS>();
+
         Reload();
         clip = gun_so.shotClip;
-
     }
 
     public override void UseWeapon(Vector3 dir)
@@ -32,21 +35,23 @@ public class GUN : WEAPON
     {
         if (currentAmmo <= 0)
         {
-
             canShoot = false;
-            
-            PLAYER_WEAPONS _pWeapon = GetComponentInParent<PLAYER_WEAPONS>();
-            _pWeapon.ChangeBackToMain();
-            Destroy(gameObject);
-            
-            //StartCoroutine(ReloadCoroutine());
+
+            if (!isMainWeapon)
+            {
+                p_WEAPON.ChangeBackToMain();
+                Destroy(gameObject);
+            }
+            else
+            {
+                StartCoroutine(ReloadCoroutine());
+            }
         }
         else
         {
             if(canShoot)
             StartCoroutine(ShootCoroutine());
         }
-
     }
 
     private void Reload()
@@ -78,7 +83,13 @@ public class GUN : WEAPON
         print("Shooting " + gun_so.itemName);
 
         currentAmmo--;
+        if (!isMainWeapon)
+        {
+            float _cAmmo = currentAmmo;
+            float _maxAmmo = gun_so.maxAmmo;
 
+            p_WEAPON.ReduceAmmo(_cAmmo / _maxAmmo);
+        }
         Shoot();
 
         float waitTime = gun_so.cadency;

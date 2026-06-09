@@ -201,8 +201,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1.67, y: 1.9104228, z: 1}
-  m_Center: {x: -0.19, y: 0.9552114, z: 0.39999998}
+  m_Size: {x: 1.67, y: 2.0446596, z: 1}
+  m_Center: {x: -0.19, y: 1.0223298, z: 0.39999998}
 --- !u!1 &7053568597400209463
 GameObject:
   m_ObjectHideFlags: 0
@@ -267,6 +267,7 @@ MonoBehaviour:
   vibrato: 10
   randomness: 90
   source: {fileID: 4754030559887991065}
+  coin_clip: {fileID: 0}
   dmg: 0
   speedRange: 1
   rotationSpeed: 0.5

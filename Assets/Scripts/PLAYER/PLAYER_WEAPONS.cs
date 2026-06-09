@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PLAYER_WEAPONS : MonoBehaviour
 {
@@ -13,6 +14,10 @@ public class PLAYER_WEAPONS : MonoBehaviour
     [Header("HAND REFERENCES")]
     [SerializeField] private Transform handTransform;
 
+    [Header("AMMO")]
+    [SerializeField] private GameObject ammoUIConteiner;
+    [SerializeField] private Image ammoFillImg;
+
     private void Start()
     {
         currentGun = mainGun;
@@ -20,17 +25,21 @@ public class PLAYER_WEAPONS : MonoBehaviour
     public void SetMainWeapon(WEAPON _w)
     {
         if (mainGun == _w) { return; }
-
+        ammoUIConteiner.SetActive(false);
         WEAPON _weapon = Instantiate(_w,handTransform);
         _weapon.transform.localPosition = Vector3.zero;
 
         mainGun =_weapon;
         currentGun = mainGun;
 
+        currentGun.isMainWeapon = true;
+
     }
     public bool SetSecondWeapon(WEAPON _w)
     {
         if(secondGun == _w) { return false; }
+        ammoUIConteiner.SetActive(true);
+        ammoFillImg.fillAmount = 1;
 
         currentGun.gameObject.SetActive(false);
 
@@ -44,9 +53,15 @@ public class PLAYER_WEAPONS : MonoBehaviour
     }
     public void ChangeBackToMain()
     {
+        ammoUIConteiner.SetActive(false);
         currentGun.gameObject.SetActive(false);
         currentGun = mainGun;
         currentGun.gameObject.SetActive(true);
+    }
+
+    public void ReduceAmmo(float _currentSecondAmmo)
+    {
+        ammoFillImg.fillAmount = _currentSecondAmmo;
     }
 
     public void UseWeapon(Vector2 _mouseDir)

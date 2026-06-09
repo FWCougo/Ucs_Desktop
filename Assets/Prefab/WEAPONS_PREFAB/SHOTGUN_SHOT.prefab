@@ -348,6 +348,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e97af6a3e6c5dcf4eb61c9acec334e71, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BULLET_PLAYER
-  bulletSpeed: 60
+  bulletSpeed: 50
   bulletSprite: {fileID: 8554402568291401976}
   DMG: 5

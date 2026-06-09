@@ -127,7 +127,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &6328508489922384359
 RectTransform:
   m_ObjectHideFlags: 0
@@ -692,7 +692,7 @@ Transform:
   m_GameObject: {fileID: 6815242555054569304}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.6, z: 1.867}
+  m_LocalPosition: {x: 0, y: 1.6, z: 1.82}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -791,6 +791,7 @@ GameObject:
   - component: {fileID: 3896216724022133750}
   - component: {fileID: 2633427341844310137}
   - component: {fileID: 2556009528634026933}
+  - component: {fileID: 8898675103996617970}
   m_Layer: 0
   m_Name: PLAYER
   m_TagString: Player
@@ -833,6 +834,7 @@ MonoBehaviour:
   p_Move: {fileID: 7008085216177644101}
   p_Player: {fileID: 2048670745190526496}
   p_Weapon: {fileID: 6417979422662162922}
+  pickups: []
 --- !u!114 &2048670745190526496
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -900,6 +902,8 @@ MonoBehaviour:
   secondGun: {fileID: 0}
   currentGun: {fileID: 0}
   handTransform: {fileID: 4638504422627568202}
+  ammoUIConteiner: {fileID: 3533681268791740540}
+  ammoFillImg: {fileID: 1033517083583621628}
 --- !u!114 &5140427551558869179
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1110,6 +1114,14 @@ CharacterController:
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 1, z: 0}
+--- !u!81 &8898675103996617970
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7423296954714287289}
+  m_Enabled: 1
 --- !u!1 &7550847683015807835
 GameObject:
   m_ObjectHideFlags: 0
@@ -1249,7 +1261,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1003464183234582994}
   - component: {fileID: 2455271213402176915}
-  - component: {fileID: 1384357533390912170}
   m_Layer: 0
   m_Name: Shadow_Sprite
   m_TagString: Untagged
@@ -1331,26 +1342,6 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
---- !u!1183024399 &1384357533390912170
-LookAtConstraint:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7718149529279503346}
-  m_Enabled: 0
-  serializedVersion: 2
-  m_Weight: 1
-  m_RotationAtRest: {x: 0, y: 0, z: 0}
-  m_RotationOffset: {x: 0, y: 180, z: 0}
-  m_Roll: 0
-  m_WorldUpObject: {fileID: 0}
-  m_UseUpObject: 0
-  m_Active: 1
-  m_IsLocked: 0
-  m_Sources:
-  - sourceTransform: {fileID: 0}
-    weight: 1
 --- !u!1 &8229253568296436086
 GameObject:
   m_ObjectHideFlags: 0
@@ -1361,7 +1352,6 @@ GameObject:
   m_Component:
   - component: {fileID: 6512969259342960217}
   - component: {fileID: 1386625861878795455}
-  - component: {fileID: 2464310071195445557}
   m_Layer: 0
   m_Name: Player_Sprite
   m_TagString: Untagged
@@ -1443,26 +1433,6 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
---- !u!1183024399 &2464310071195445557
-LookAtConstraint:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8229253568296436086}
-  m_Enabled: 0
-  serializedVersion: 2
-  m_Weight: 1
-  m_RotationAtRest: {x: 0, y: 0, z: 0}
-  m_RotationOffset: {x: 0, y: 180, z: 0}
-  m_Roll: 0
-  m_WorldUpObject: {fileID: 0}
-  m_UseUpObject: 0
-  m_Active: 1
-  m_IsLocked: 0
-  m_Sources:
-  - sourceTransform: {fileID: 0}
-    weight: 1
 --- !u!1 &8356238826242293658
 GameObject:
   m_ObjectHideFlags: 0

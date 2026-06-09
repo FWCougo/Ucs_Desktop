@@ -38,10 +38,8 @@ public class INPUT_MANAGER : MonoBehaviour
         mouseWorldPos = Vector3.zero;
 
         if (Physics.Raycast(ray, out hit, Mathf.Infinity, groundLayer))
-        {
-            
-            mouseWorldPos = hit.point;
-            
+        {            
+            mouseWorldPos = hit.point;            
         }
 
         Vector3 direction = (mouseWorldPos - transform.position).normalized;

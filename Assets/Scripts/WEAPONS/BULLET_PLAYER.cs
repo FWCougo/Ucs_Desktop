@@ -1,6 +1,7 @@
 using System.Collections;
 using UnityEngine;
 using DG.Tweening;
+using System;
 
 public class BULLET_PLAYER : MonoBehaviour
 {
@@ -36,6 +37,24 @@ public class BULLET_PLAYER : MonoBehaviour
 
     }
 
+    private void CauseDMG()
+    {
+        Collider[] cols;
+
+        cols = Physics.OverlapSphere(transform.position, .5f);
+
+        for (int i = 0; i < cols.Length; i++)
+        {
+            IDamageable damageable = cols[i].gameObject.GetComponentInParent<IDamageable>();
+
+            if (damageable != null)
+            {
+                damageable.Damage(Damage);
+                Destroy(gameObject);
+            }
+        }
+    }
+
     private IEnumerator Disable(float lifeSpan)
     {
         yield return new WaitForSeconds(lifeSpan);
@@ -46,6 +65,7 @@ public class BULLET_PLAYER : MonoBehaviour
     private void FixedUpdate()
     {
         if (bulletDir == Vector3.zero) return;
+        CauseDMG();
         transform.Translate(bulletDir * bulletSpeed * Time.fixedDeltaTime, Space.World);
     }
 }
