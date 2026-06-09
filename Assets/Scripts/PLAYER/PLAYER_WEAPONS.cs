@@ -18,6 +18,11 @@ public class PLAYER_WEAPONS : MonoBehaviour
     [SerializeField] private GameObject ammoUIConteiner;
     [SerializeField] private Image ammoFillImg;
 
+    [Header("SFX")]
+    [SerializeField] private AudioSource combatASource;
+    [SerializeField] private AudioClip gettingGunClip;
+
+
     private void Start()
     {
         currentGun = mainGun;

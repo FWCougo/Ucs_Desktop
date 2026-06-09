@@ -17,6 +17,7 @@ public class PLAYER_MANAGER : MonoBehaviour
 
 
     public PLAYER_WEAPONS PLAYER_WEAPONS { get { return p_Weapon; } }
+    public PLAYER PLAYER { get { return p_Player; } }
 
     private void Awake()
     {

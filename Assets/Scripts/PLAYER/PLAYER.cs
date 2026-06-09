@@ -38,8 +38,36 @@ public class PLAYER : MonoBehaviour
     {
         maxHp = _maxHP;
         hp = maxHp;
+
+        UpdateLifeIMG();
     }
 
+    public void ReceiveHealth(float _hp)
+    {
+        hp += _hp;
+
+        if(hp >= maxHp)
+        {
+            hp = maxHp;
+        }
+
+        UpdateLifeIMG();
+
+        StartCoroutine(FlashHEAL());
+    }
+
+    // --- Update life IMG ----------------------------------
+    private void UpdateLifeIMG()
+    {
+        hpIMG.fillAmount = hp / maxHp;
+    }
+
+    private IEnumerator FlashHEAL()
+    {
+        p_sprite.color = Color.limeGreen;
+        yield return new WaitForSeconds(0.15f);
+        p_sprite.color = Color.white;
+    }
 
     // ─── Physics ─────────────────────────────────────────────────────
 
@@ -80,7 +108,7 @@ public class PLAYER : MonoBehaviour
         canTakeDMG = false;
 
         hp = Mathf.Max(hp - dmg, 0f);
-        hpIMG.fillAmount = hp / maxHp;
+        UpdateLifeIMG();
 
         CAMERA_SHAKE.Instance.ShakeMedium();
         combatASource.PlayOneShot(dmgAClips[Random.Range(0, dmgAClips.Length)]);
