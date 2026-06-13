@@ -8,6 +8,7 @@ public class ENEMY : MonoBehaviour, IDamageable, IGiveDamage
     public Transform currentPlayer;
     [Header("Sprite")]
     public SpriteRenderer enemySprite;
+    public SpriteRenderer shadowSprite;
     [Header("HP")]
     [SerializeField] private float HP;
     [SerializeField] private bool canTakeDMG = true;
