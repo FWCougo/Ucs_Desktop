@@ -6,6 +6,7 @@ using UnityEngine.AI;
 
 public class LITTLEEYE_ENEMY : ENEMY
 {
+    [SerializeField] private Transform spriteParent;
     [SerializeField] private Sprite[] phasesSprites;
     [SerializeField] private Sprite[] flyingSprites;
 
@@ -15,6 +16,7 @@ public class LITTLEEYE_ENEMY : ENEMY
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        agent.enabled = false;
         agent.updateRotation = false;
 
         Vector3 pos = transform.position;
@@ -45,6 +47,8 @@ public class LITTLEEYE_ENEMY : ENEMY
 
     IEnumerator SairDoCasulo()
     {
+        agent.enabled = true;
+
         bool isChanging = true;
         float shakeDuration = 1.5f;
 
@@ -70,8 +74,8 @@ public class LITTLEEYE_ENEMY : ENEMY
     IEnumerator FlyingAnimation()
     {
         isMoving = true;
-        enemySprite.transform.DOLocalMoveY(3.5f, 1f);
-        enemySprite.transform.DOLocalMoveZ(1, 1f);
+        spriteParent.transform.DOLocalMoveY(3.5f, 1f);
+        spriteParent.transform.DOLocalMoveZ(1, 1f);
 
         float timeBetweenSprites = 0.3f;
 

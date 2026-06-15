@@ -1,8 +1,14 @@
+using DG.Tweening;
+using System.Runtime.InteropServices.WindowsRuntime;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class PLAYER_WEAPONS : MonoBehaviour
 {
+
+    [SerializeField]
+    private Transform aim_Trans;
+
     [Header("WEAPONS REFS")]
     [SerializeField]
     private WEAPON mainGun;
@@ -26,6 +32,10 @@ public class PLAYER_WEAPONS : MonoBehaviour
     private void Start()
     {
         currentGun = mainGun;
+    }
+    public Transform GetHand()
+    {
+        return handTransform;
     }
     public void SetMainWeapon(WEAPON _w)
     {
@@ -67,14 +77,21 @@ public class PLAYER_WEAPONS : MonoBehaviour
         currentGun = mainGun;
         currentGun.gameObject.SetActive(true);
     }
-
     public void ReduceAmmo(float _currentSecondAmmo)
     {
         ammoFillImg.fillAmount = _currentSecondAmmo;
     }
-
     public void UseWeapon(Vector2 _mouseDir)
     {
+        AnimateAim();
         currentGun.UseWeapon(_mouseDir);
     }
+    private void AnimateAim()
+    {
+        aim_Trans.DOScale(3, 0.25f).OnComplete(() =>
+        {
+            aim_Trans.DOScale(5, 0.25f);
+        });
+    }
+
 }

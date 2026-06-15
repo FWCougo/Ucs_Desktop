@@ -11,10 +11,12 @@ public class STALKER_ENEMY : ENEMY
     [SerializeField]
     private NavMeshAgent agent;
     Tween walkTween;
+    [SerializeField]
+    private float rotAmout = 20f;
     private void Start()
     {
         Vector3 rot = enemySprite.transform.rotation.eulerAngles;
-        rot.y += 20;
+        rot.y += rotAmout;
         walkTween = enemySprite.transform.DOLocalRotate(rot, rotationSpeed, RotateMode.Fast).SetLoops(-1, LoopType.Yoyo);
         agent.updateRotation = false;
         agent.speed = enemy_SO.m_SPEED + Random.Range(-speedRange, speedRange);

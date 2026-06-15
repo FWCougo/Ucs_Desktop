@@ -201,7 +201,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1.67, y: 2.0446596, z: 1}
+  m_Size: {x: 1.8535419, y: 2.0446596, z: 1.3106081}
   m_Center: {x: -0.19, y: 1.0223298, z: 0.39999998}
 --- !u!1 &7053568597400209463
 GameObject:
@@ -257,6 +257,7 @@ MonoBehaviour:
   enemy_SO: {fileID: 11400000, guid: 84f971534ce99bb4e81a9eb5377e0542, type: 2}
   currentPlayer: {fileID: 0}
   enemySprite: {fileID: 7132763724137978924}
+  shadowSprite: {fileID: 0}
   HP: 0
   canTakeDMG: 1
   bloodVFXAmount: 10
@@ -507,13 +508,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8388893442368242098}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.42101005, y: -0.07898997, z: 0.03683362, w: 0.90285903}
+  m_LocalRotation: {x: 0.535255, y: -0.07350644, z: 0.046828765, w: 0.8401821}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 5, y: 5, z: 5}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4170875136097740685}
-  m_LocalEulerAnglesHint: {x: 50, y: -10, z: 0}
+  m_LocalEulerAnglesHint: {x: 65, y: -10, z: 0}
 --- !u!212 &7132763724137978924
 SpriteRenderer:
   serializedVersion: 2

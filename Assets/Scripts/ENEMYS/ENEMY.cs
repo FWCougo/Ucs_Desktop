@@ -40,6 +40,7 @@ public class ENEMY : MonoBehaviour, IDamageable, IGiveDamage
         bloodSplatter_GO.SetActive(false);
         InstantiateBloodVFX();
         FindClosestPlayer();
+        canTakeDMG = true;
     }
     // ─── IDamageable ────────────────────────────────────────────────
     public void Damage(float dmg)

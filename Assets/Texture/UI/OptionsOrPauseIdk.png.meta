@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: e5d94023cb85cfa4cab7a674ac60a048
+guid: 709c98cc13d508646ac516f8ab205c50
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -136,23 +136,23 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: BloodTear_Front_0
+      name: OptionsOrPauseIdk_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 0
-        width: 16
-        height: 16
-      alignment: 9
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
+        y: 5
+        width: 8
+        height: 9
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 1, y: 1, z: 1, w: 1}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2258a57292d72264fb136b8f5a7b23c0
-      internalID: 535303693
+      spriteID: 55d7244ea4c5add49b725fa9a1e40f33
+      internalID: -964853324
       vertices: []
       indices: 
       edges: []
@@ -161,7 +161,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 63886e5dcf7b13f4ca64c9376425e288
+    spriteID: 427b6f53d85c3af41940c8acef161fc6
     internalID: 0
     vertices: []
     indices: 
@@ -173,7 +173,7 @@ TextureImporter:
       - key: SpriteEditor.SliceSettings
         value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":64.0,"y":64.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":0,"keepEmptyRects":false,"isAlternate":false}'
     nameFileIdTable:
-      BloodTear_Front_0: 535303693
+      OptionsOrPauseIdk_0: -964853324
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

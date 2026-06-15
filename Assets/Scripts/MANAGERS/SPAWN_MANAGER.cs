@@ -95,7 +95,7 @@ public class SPAWN_MANAGER : MonoBehaviour
             int selectMonster = Random.Range(0, 100);
 
 
-            int monsterIndex = 0;
+            int monsterIndex;
             if (selectMonster > 20)
             {
                 monsterIndex = 0;
@@ -105,7 +105,6 @@ public class SPAWN_MANAGER : MonoBehaviour
                 monsterIndex = 1;
             }
 
-           // int monsterIndex = Random.Range(0, monsters_prefabs.Length);
             GameObject monster = monsters_prefabs[monsterIndex];
 
             //SPAWN MONSTER (LATER CHANGE SO IT USES OBJECT POOLING)

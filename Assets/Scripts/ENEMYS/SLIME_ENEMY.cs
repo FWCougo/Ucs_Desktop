@@ -91,7 +91,7 @@ public class SLIME_ENEMY : ENEMY
             shotDir = RandomizeDirection(shotDir, 10);
 
             _bullet.gameObject.SetActive(true);
-            _bullet.ReceiveDirection(shotDir, 1.5f);
+            _bullet.ReceiveDirection(shotDir, 0.9f);
         }
 
         yield return null;

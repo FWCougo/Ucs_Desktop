@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using DG.Tweening;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -61,7 +62,7 @@ public class PLAYER : MonoBehaviour
 
         UpdateLifeIMG();
 
-        StartCoroutine(FlashHEAL());
+        FlashHEAL();
     }
 
     // --- Update life IMG ----------------------------------
@@ -70,11 +71,12 @@ public class PLAYER : MonoBehaviour
         hpIMG.fillAmount = hp / maxHp;
     }
 
-    private IEnumerator FlashHEAL()
+    private void FlashHEAL()
     {
-        p_sprite.color = Color.springGreen;
-        yield return new WaitForSeconds(0.1f);
-        p_sprite.color = Color.white;
+        Color _col = Color.green;
+        p_sprite.DOColor(_col, 0.25f).OnComplete(()=>
+            p_sprite.DOColor(Color.white, 0.25f)
+        );
     }
 
     // ─── Physics ─────────────────────────────────────────────────────

@@ -12,6 +12,8 @@ public class BULLET : MonoBehaviour, IGiveDamage
 
     [SerializeField] private float DMG = 5;
 
+    [SerializeField] private ParticleSystem splatterVFX;
+
     float normalPos;
 
     public float Damage => DMG;
@@ -23,6 +25,9 @@ public class BULLET : MonoBehaviour, IGiveDamage
 
     public void ReceiveDirection(Vector3 dir, float lifeSpan)
     {
+        splatterVFX.transform.SetParent(transform);
+        splatterVFX.transform.localPosition = Vector3.zero;
+
         bulletDir = dir; // dir já deve chegar normalizado de quem chama
         StartCoroutine(Disable(lifeSpan));
 
@@ -37,6 +42,8 @@ public class BULLET : MonoBehaviour, IGiveDamage
     private IEnumerator Disable(float lifeSpan)
     {
         yield return new WaitForSeconds(lifeSpan);
+        splatterVFX.transform.SetParent(null);
+        splatterVFX.Play();
         bulletDir = Vector3.zero; // Reseta para a bala não continuar em FixedUpdate
         gameObject.SetActive(false);
     }

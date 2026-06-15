@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c401f9793d99c8b418626e9f645d32bb, type: 3}
+  m_Name: ZOMBIE_SO
+  m_EditorClassIdentifier: Assembly-CSharp::ENEMY_SO
+  m_NAME: ZUMBI
+  m_HP: 6
+  m_DMG: 13
+  m_SPEED: 8
+  blood_VFX: {fileID: 8194751847581766623, guid: 8e839c72d5c6331448f4507665f05410, type: 3}

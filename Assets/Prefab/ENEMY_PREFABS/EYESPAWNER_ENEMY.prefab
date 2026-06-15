@@ -137,13 +137,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2195199931824109389}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.42261827, y: 0, z: 0, w: 0.9063079}
+  m_LocalRotation: {x: 0.53729963, y: 0, z: 0, w: 0.8433915}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 5, y: 5, z: 5}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 293173568586706493}
-  m_LocalEulerAnglesHint: {x: 50, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 65, y: 0, z: 0}
 --- !u!212 &1061378780753704165
 SpriteRenderer:
   serializedVersion: 2
@@ -476,6 +476,7 @@ MonoBehaviour:
   enemy_SO: {fileID: 11400000, guid: db19aa213528e62498fa61dad406c070, type: 2}
   currentPlayer: {fileID: 0}
   enemySprite: {fileID: 1061378780753704165}
+  shadowSprite: {fileID: 0}
   HP: 0
   canTakeDMG: 1
   bloodVFXAmount: 10
