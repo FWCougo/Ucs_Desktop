@@ -83,6 +83,7 @@ public class PLAYER_WEAPONS : MonoBehaviour
     }
     public void UseWeapon(Vector2 _mouseDir)
     {
+        if(currentGun == null) { return; }
         AnimateAim();
         currentGun.UseWeapon(_mouseDir);
     }
