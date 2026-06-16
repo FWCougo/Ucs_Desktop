@@ -1,12 +1,13 @@
 using UnityEngine;
 using TMPro;
 using UnityEngine.SceneManagement;
+using DG.Tweening;
 
 public class GAME_MANAGER : MonoBehaviour
 {
     public static GAME_MANAGER Instance;
 
-    public GameObject player_1;
+    public PLAYER_MANAGER playerManager;
 
     public bool isDead = false;
 
@@ -15,6 +16,9 @@ public class GAME_MANAGER : MonoBehaviour
     [SerializeField] private int killCount = 0;
 
     [SerializeField] private TMP_Text kill_TXT;
+
+    [SerializeField] private MultipleTargetCamera multiTargetCam;
+    [SerializeField] private Transform cameraHolder;
 
 
     private void Awake()
@@ -38,13 +42,21 @@ public class GAME_MANAGER : MonoBehaviour
 
     public void StartGame() 
     {
+        //Camera
+        multiTargetCam.enabled = true;
+        cameraHolder.DORotate(new Vector3(80, 0, 0), 3f);
+
+        //Open Game Menu
+        MENU_MANAGER.Instance.OpenMenu("IN-GAME_MENU");
+
         Cursor.visible = false;
-        player_1.SetActive(true);
         SPAWN_MANAGER.Instance.StartSpawning();
+        playerManager.StartGame();
     }
 
     public void GAMEOVER()
     {
+        Cursor.visible = true;
         isDead = true;
         MENU_MANAGER.Instance.OpenMenu("GAMEOVER_MENU");
     }

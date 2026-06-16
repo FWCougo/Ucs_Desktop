@@ -12,9 +12,10 @@ public abstract class PICKUP : MonoBehaviour
     private void Start()
     {
         float _yPos = spriteTrans.transform.position.y;
+        float _xScale = spriteTrans.transform.localScale.x;
 
         spriteTrans.transform.DOLocalMoveY(2.2f, 1).SetLoops(-1, LoopType.Yoyo).SetEase(Ease.InOutSine);
-        spriteShadowTrans.transform.DOScale(3.8f, 1).SetLoops(-1, LoopType.Yoyo).SetEase(Ease.InOutSine);
+        spriteShadowTrans.transform.DOScale(_xScale*0.76f, 1).SetLoops(-1, LoopType.Yoyo).SetEase(Ease.InOutSine);
     }
 
     private void OnTriggerEnter(Collider other)
