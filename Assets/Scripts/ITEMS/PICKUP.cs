@@ -24,7 +24,6 @@ public abstract class PICKUP : MonoBehaviour
         {
             playerManager = other.GetComponent<PLAYER_MANAGER>();
             PICKED_UP();
-            print("Pego por " + other.name);
         }
     }
     public abstract void PICKED_UP();

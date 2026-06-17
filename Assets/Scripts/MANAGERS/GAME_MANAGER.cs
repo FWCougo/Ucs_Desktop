@@ -20,10 +20,15 @@ public class GAME_MANAGER : MonoBehaviour
     [SerializeField] private MultipleTargetCamera multiTargetCam;
     [SerializeField] private Transform cameraHolder;
 
+    [Header("COINS")]
+    [SerializeField] private int coins = 0;
+    [SerializeField] private TMP_Text coinsMenu_TXT;
+    [SerializeField] private TMP_Text coinsGame_TXT;
 
     private void Awake()
     {
         Instance = this;
+        LoadCoins();
     }
 
     private void Start()
@@ -86,4 +91,23 @@ public class GAME_MANAGER : MonoBehaviour
         }
         
     }
+
+    public void LoadCoins()
+    {
+        coins = PlayerPrefs.GetInt("COIN_KEY");
+        coinsMenu_TXT.text = $"{coins}X";
+        coinsGame_TXT.text = $"COINS : {coins}X";
+    }
+    public void ChangeCoins(int _i)
+    {
+        coins += _i;
+        coinsMenu_TXT.text = $"{coins}X";
+        coinsGame_TXT.text = $"COINS : {coins}X";
+        PlayerPrefs.SetInt("COIN_KEY", coins);
+    }
+    public int GetCoins()
+    {
+        return coins;
+    }
+
 }
