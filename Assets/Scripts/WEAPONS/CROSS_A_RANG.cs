@@ -80,7 +80,8 @@ public class CROSS_A_RANG : WEAPON
 
                 if (damageable != null)
                 {
-                    damageable.Damage(boomerang_SO.damage);
+                    float totalDMG = boomerang_SO.damage + GAME_MANAGER.Instance.GetExtraDMG();
+                    damageable.Damage(totalDMG);
                 }
             }
 

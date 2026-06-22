@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: GOBLIN_SO
   m_EditorClassIdentifier: Assembly-CSharp::ENEMY_SO
   m_NAME: GOBLIN
-  m_HP: 4
+  m_HP: 5
   m_DMG: 10
   m_SPEED: 10
   blood_VFX: {fileID: 8194751847581766623, guid: 8e839c72d5c6331448f4507665f05410, type: 3}

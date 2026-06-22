@@ -10,20 +10,20 @@ public class GAME_MANAGER : MonoBehaviour
     public PLAYER_MANAGER playerManager;
 
     public bool isDead = false;
-
     [SerializeField] private bool isPaused;
 
+    [Header("MUSIC")]
+    [SerializeField] private AudioSource music_source;
+
+    [Header("KILLS")]
     [SerializeField] private int killCount = 0;
-
     [SerializeField] private TMP_Text kill_TXT;
-
-    [SerializeField] private MultipleTargetCamera multiTargetCam;
-    [SerializeField] private Transform cameraHolder;
 
     [Header("COINS")]
     [SerializeField] private int coins = 0;
     [SerializeField] private TMP_Text coinsMenu_TXT;
     [SerializeField] private TMP_Text coinsGame_TXT;
+    [SerializeField] private TMP_Text coinsUpgrade_TXT;
 
     private void Awake()
     {
@@ -41,21 +41,29 @@ public class GAME_MANAGER : MonoBehaviour
     public void IncreaseKillCount()
     {
         killCount++;
-        SPAWN_MANAGER.Instance.ReceiveKillCount();
+        //SPAWN_MANAGER.Instance.ReceiveKillCount();
         kill_TXT.text = "KILLS: " + killCount;
     }
 
-    public void StartGame() 
+    public void StartGame()
     {
         //Camera
-        multiTargetCam.enabled = true;
-        cameraHolder.DORotate(new Vector3(80, 0, 0), 3f);
+        //multiTargetCam.enabled = true;
+        //cameraHolder.DORotate(new Vector3(80, 0, 0), 3f);
+
+        //start Music
+        music_source.Play();
+
+        //Start Devil
+        DEVIL_SCRIPT.Instance.StartGame();
+
 
         //Open Game Menu
         MENU_MANAGER.Instance.OpenMenu("IN-GAME_MENU");
 
         Cursor.visible = false;
-        SPAWN_MANAGER.Instance.StartSpawning();
+        //SPAWN_MANAGER.Instance.StartSpawning();
+        TIMESPAWN_MANAGER.Instance.StartRound();
         playerManager.StartGame();
     }
 
@@ -78,13 +86,14 @@ public class GAME_MANAGER : MonoBehaviour
 
         if(isPaused)
         {
+            music_source.Pause();
             Time.timeScale = 0;
             Cursor.visible = true;
             MENU_MANAGER.Instance.OpenMenu("PAUSE_MENU");
         }
         else
         {
-
+            music_source.UnPause();
             Time.timeScale = 1;
             Cursor.visible = false;
             MENU_MANAGER.Instance.OpenMenu("IN-GAME_MENU");
@@ -92,16 +101,30 @@ public class GAME_MANAGER : MonoBehaviour
         
     }
 
+    [SerializeField] private float extraDMG = 0;
+
+    public void SetExtraDMG(float _extraDMG)
+    {
+        extraDMG = _extraDMG;
+    }
+    public float GetExtraDMG()
+    {
+        return extraDMG;
+    }
+
+    #region COINS
     public void LoadCoins()
     {
         coins = PlayerPrefs.GetInt("COIN_KEY");
-        coinsMenu_TXT.text = $"{coins}X";
+        coinsMenu_TXT.text = $"{coins}";
+        coinsUpgrade_TXT.text = $"{coins}";
         coinsGame_TXT.text = $"COINS : {coins}X";
     }
     public void ChangeCoins(int _i)
     {
         coins += _i;
-        coinsMenu_TXT.text = $"{coins}X";
+        coinsMenu_TXT.text = $"{coins}";
+        coinsUpgrade_TXT.text = $"{coins}";
         coinsGame_TXT.text = $"COINS : {coins}X";
         PlayerPrefs.SetInt("COIN_KEY", coins);
     }
@@ -109,5 +132,5 @@ public class GAME_MANAGER : MonoBehaviour
     {
         return coins;
     }
-
+    #endregion
 }

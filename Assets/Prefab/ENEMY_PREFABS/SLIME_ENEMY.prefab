@@ -170,7 +170,7 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -10
   m_MaskInteraction: 0
   m_Sprite: {fileID: 1801227305, guid: 5716698359b9d0e4c862eb6b077915e3, type: 3}
   m_Color: {r: 0, g: 0, b: 0, a: 1}
@@ -466,6 +466,11 @@ MonoBehaviour:
   isAlive: 1
   enemy_SO: {fileID: 11400000, guid: 3e3706d1b950e3f4d8d67423e5b830a7, type: 2}
   currentPlayer: {fileID: 0}
+  drops:
+  - {fileID: 3829023614283986933, guid: 0a34cca8ef561f247b582f050eda0236, type: 3}
+  - {fileID: 6521653110523753464, guid: e11b3af652bb11e40a3312078dff23d4, type: 3}
+  - {fileID: 6521653110523753464, guid: 4d654ce5f73171042bec326a32c1be26, type: 3}
+  - {fileID: 2050433979555355772, guid: 63435d4961de6a44fa194f3b83520e78, type: 3}
   enemySprite: {fileID: 4552138093755691608}
   shadowSprite: {fileID: 8135954897246172807}
   HP: 0
@@ -569,7 +574,7 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -20
   m_MaskInteraction: 0
   m_Sprite: {fileID: 696015160, guid: 4b5bfc809d94e9a40a7d9c8b64f0abf8, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}

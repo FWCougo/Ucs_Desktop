@@ -15,7 +15,7 @@ public class BULLET_PLAYER : MonoBehaviour
 
     float normalPos;
 
-    public float Damage => DMG;
+    public float Damage => DMG + GAME_MANAGER.Instance.GetExtraDMG();
 
     private void Start()
     {

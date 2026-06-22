@@ -92,4 +92,18 @@ public class LITTLEEYE_ENEMY : ENEMY
 
     }
 
+    public override void Die()
+    {
+        base.Die();
+       
+        Vector3 rot = enemySprite.transform.rotation.eulerAngles;
+        rot.x = 89;
+        enemySprite.transform.DOLocalRotate(rot, 1f, RotateMode.Fast).OnComplete(() =>
+        {
+            enemySprite.DOFade(0, 1).OnComplete(() => gameObject.SetActive(false));
+        });
+
+        GAME_MANAGER.Instance.IncreaseKillCount();
+    }
+
 }

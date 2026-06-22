@@ -10,7 +10,6 @@ public class EYESPAWNER_ENEMY : ENEMY
 
     [SerializeField] private float waitTillNextPose = 1f;
 
-
     [SerializeField] private Transform spawnLittleEye;
     [SerializeField] private LITTLEEYE_ENEMY littleEye_prefab;
 
@@ -27,7 +26,6 @@ public class EYESPAWNER_ENEMY : ENEMY
             StartCoroutine(DoStuff());
 
         });
-
     }
 
     public override void Die()
@@ -94,7 +92,11 @@ public class EYESPAWNER_ENEMY : ENEMY
             LITTLEEYE_ENEMY _littleEye = Instantiate(littleEye_prefab, spawnLittleEye.position, Quaternion.identity);
             _littleEye.enemySprite.sortingOrder = 2;
 
-            StartCoroutine(DoStuff());
+            if(isAlive)
+            {
+                StartCoroutine(DoStuff());
+            }
+            
         }
         );
 

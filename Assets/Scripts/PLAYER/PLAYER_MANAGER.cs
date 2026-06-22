@@ -11,12 +11,15 @@ public class PLAYER_MANAGER : MonoBehaviour
     private PLAYER p_Player;
     [SerializeField]
     private PLAYER_WEAPONS p_Weapon;
+    [SerializeField]
+    private PLAYER_PASSIVES p_Passives;
 
     [SerializeField]
     private Canvas p_Canvas;
 
     public PLAYER_WEAPONS PLAYER_WEAPONS { get { return p_Weapon; } }
     public PLAYER PLAYER { get { return p_Player; } }
+    public PLAYER_MOVE PLAYER_MOVE { get { return p_Move; } }
 
     private void Awake()
     {
@@ -30,6 +33,7 @@ public class PLAYER_MANAGER : MonoBehaviour
         p_Canvas.gameObject.SetActive(true);
         p_Weapon.SetMainWeapon(player_SO.mainWeapon);
         p_Move.ChangeSpeed(player_SO.speed);
+        p_Passives.InstanciarPassivas();
     }
 
 

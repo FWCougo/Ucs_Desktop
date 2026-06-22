@@ -54,6 +54,11 @@ MonoBehaviour:
   isAlive: 1
   enemy_SO: {fileID: 11400000, guid: ad908d6fb3080244390cddef5dd65303, type: 2}
   currentPlayer: {fileID: 0}
+  drops:
+  - {fileID: 3829023614283986933, guid: 0a34cca8ef561f247b582f050eda0236, type: 3}
+  - {fileID: 6521653110523753464, guid: e11b3af652bb11e40a3312078dff23d4, type: 3}
+  - {fileID: 6521653110523753464, guid: 4d654ce5f73171042bec326a32c1be26, type: 3}
+  - {fileID: 2050433979555355772, guid: 63435d4961de6a44fa194f3b83520e78, type: 3}
   enemySprite: {fileID: 383869972815608195}
   shadowSprite: {fileID: 2010783055668748482}
   HP: 0
@@ -293,7 +298,7 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -10
   m_MaskInteraction: 0
   m_Sprite: {fileID: 458607122, guid: 199577af3dc5af547a4e780b6c8b17f4, type: 3}
   m_Color: {r: 0, g: 0, b: 0, a: 1}
@@ -384,7 +389,7 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -20
   m_MaskInteraction: 0
   m_Sprite: {fileID: 923000932, guid: ee7080eda76ec824798a599fbfd81e5c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}

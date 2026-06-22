@@ -5,7 +5,6 @@ using UnityEngine.UI;
 
 public class PLAYER_WEAPONS : MonoBehaviour
 {
-
     [SerializeField]
     private Transform aim_Trans;
 
@@ -94,5 +93,6 @@ public class PLAYER_WEAPONS : MonoBehaviour
             aim_Trans.DOScale(5, 0.25f);
         });
     }
+
 
 }

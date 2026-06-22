@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: PADRE_BRUTTI
   m_EditorClassIdentifier: Assembly-CSharp::PLAYER_SO
   characterName: PADRE BRUTTI
-  speed: 13
-  HP: 120
+  speed: 10
+  HP: 100
   mainWeapon: {fileID: 3391777263594539931, guid: de628753597527c48bc299a14bbc95d7, type: 3}
   frontSprite: {fileID: -454257541, guid: f74de26a524aa3445a9dfe19113c89ab, type: 3}
   backSprite: {fileID: 972121418, guid: da7b912fb1eeaeb4cb4ff40f473c08e3, type: 3}
