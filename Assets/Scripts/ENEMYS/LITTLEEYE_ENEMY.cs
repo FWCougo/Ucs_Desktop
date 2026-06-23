@@ -16,23 +16,24 @@ public class LITTLEEYE_ENEMY : ENEMY
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        agent.speed = enemy_SO.m_SPEED;
         agent.enabled = false;
         agent.updateRotation = false;
 
         Vector3 pos = transform.position;
         float yValue = pos.y + 2;
 
-        transform.DOMoveY(yValue, 1).OnComplete(() =>
+        transform.DOMoveY(yValue, 0.5f).OnComplete(() =>
         {
-            transform.DOMoveY(0,2).SetEase(Ease.InSine);
+            transform.DOMoveY(0, 1.5f).SetEase(Ease.InSine);
         });
 
         float zValue = pos.z - Random.Range(5,6);
 
-        transform.DOMoveZ(zValue, 3);
+        transform.DOMoveZ(zValue, 2);
 
-        float xValue = pos.x + Random.Range(-3f,3f);
-        transform.DOMoveX(xValue, 3).OnComplete(()=>
+        float xValue = pos.x + Random.Range(-5f,5f);
+        transform.DOMoveX(xValue, 2).OnComplete(()=>
             StartCoroutine(SairDoCasulo())
         );
     }
@@ -50,7 +51,7 @@ public class LITTLEEYE_ENEMY : ENEMY
         agent.enabled = true;
 
         bool isChanging = true;
-        float shakeDuration = 1.5f;
+        float shakeDuration = 0.75f;
 
         yield return new WaitForSeconds(shakeDuration);
 
@@ -81,7 +82,7 @@ public class LITTLEEYE_ENEMY : ENEMY
 
         while (isAlive)
         {
-            for (int i = 1; i < flyingSprites.Length; i++)
+            for (int i = 0; i < flyingSprites.Length; i++)
             {
                 enemySprite.sprite = flyingSprites[i];
                 shadowSprite.sprite = flyingSprites[i];
@@ -95,7 +96,13 @@ public class LITTLEEYE_ENEMY : ENEMY
     public override void Die()
     {
         base.Die();
-       
+
+        if (agent.isOnNavMesh)
+        {
+            agent.speed = 0;
+            agent.SetDestination(transform.position);
+            agent.isStopped = true;
+        }        
         Vector3 rot = enemySprite.transform.rotation.eulerAngles;
         rot.x = 89;
         enemySprite.transform.DOLocalRotate(rot, 1f, RotateMode.Fast).OnComplete(() =>

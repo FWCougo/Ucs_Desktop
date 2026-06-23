@@ -88,6 +88,16 @@ public class CROSS_A_RANG : WEAPON
         }
     }
 
+    public override void flipWeapon(bool flipped)
+    {
+        
+    }
+
+    public override void changeLayer(int layer)
+    {
+        g_Sprite.sortingOrder = layer;
+    }
+
     public override void UseWeapon(Vector3 dir)
     {
         if (dir != Vector3.zero)

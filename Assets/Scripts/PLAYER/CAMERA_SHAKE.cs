@@ -1,5 +1,5 @@
 using UnityEngine;
-using DG.Tweening;
+using Cinemachine; // ou "using Unity.Cinemachine;" se estiver no Cinemachine 3.x
 
 public class CAMERA_SHAKE : MonoBehaviour
 {
@@ -7,8 +7,10 @@ public class CAMERA_SHAKE : MonoBehaviour
 
     [Header("Default Preset")]
     [SerializeField] private float defaultStrength = 0.5f;
-    [SerializeField] private int defaultVibrato = 10;
     [SerializeField] private float defaultDuration = 0.3f;
+
+    [SerializeField]
+    private CinemachineImpulseSource impulseSource;
 
     private void Awake()
     {
@@ -18,18 +20,20 @@ public class CAMERA_SHAKE : MonoBehaviour
             return;
         }
         Instance = this;
+
+        impulseSource = GetComponent<CinemachineImpulseSource>();
     }
 
-    public void Shake(float duration, float strength, int vibrato = 10)
+    public void Shake(float duration, float strength)
     {
-        DOTween.Kill(transform);
-        transform.DOShakePosition(duration, strength, vibrato).SetEase(Ease.OutQuad);
+        impulseSource.m_ImpulseDefinition.m_ImpulseDuration = duration;
+        impulseSource.GenerateImpulse(strength);
     }
 
-    public void ShakeDefault() => Shake(defaultDuration, defaultStrength, defaultVibrato);
+    public void ShakeDefault() => Shake(defaultDuration, defaultStrength);
 
     // Presets prontos
-    public void ShakeLight() => Shake(0.2f, 0.2f, 8);
-    public void ShakeMedium() => Shake(0.3f, 0.5f, 10);
-    public void ShakeHeavy() => Shake(0.5f, 1.2f, 15);
+    public void ShakeLight() => Shake(0.2f, 0.15f);
+    public void ShakeMedium() => Shake(0.2f, 0.25f);
+    public void ShakeHeavy() => Shake(0.5f, 1.2f);
 }

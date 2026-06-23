@@ -9,8 +9,14 @@ public class GAME_MANAGER : MonoBehaviour
 
     public PLAYER_MANAGER playerManager;
 
+    public int enemyCount = 0;
+
     public bool isDead = false;
     [SerializeField] private bool isPaused;
+
+    [Header("Controles")]
+    [SerializeField] private SpriteRenderer wasdSprite;
+    [SerializeField] private SpriteRenderer mouseSprite;
 
     [Header("MUSIC")]
     [SerializeField] private AudioSource music_source;
@@ -65,6 +71,21 @@ public class GAME_MANAGER : MonoBehaviour
         //SPAWN_MANAGER.Instance.StartSpawning();
         TIMESPAWN_MANAGER.Instance.StartRound();
         playerManager.StartGame();
+
+        FadeControls();
+    }
+
+    public void FadeControls()
+    {
+        mouseSprite.DOFade(1, 1).OnComplete(() =>
+        {
+            mouseSprite.DOFade(0, 5);
+        });
+        wasdSprite.DOFade(1, 1).OnComplete(() =>
+        {
+            wasdSprite.DOFade(0, 5);
+        });
+        
     }
 
     public void GAMEOVER()

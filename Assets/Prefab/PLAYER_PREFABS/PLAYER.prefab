@@ -948,8 +948,11 @@ MonoBehaviour:
   regenLV: 0
   willOfGod: {fileID: 4136291182420910078, guid: 6dc77f71a7232ce4496fcc66b889e5b2, type: 3}
   hpLV: 0
+  hp_Passiva: {fileID: 0}
   speedLV: 0
+  speed_Passiva: {fileID: 0}
   dmgLV: 0
+  dmg_Passiva: {fileID: 0}
 --- !u!114 &1199061607092345142
 MonoBehaviour:
   m_ObjectHideFlags: 0

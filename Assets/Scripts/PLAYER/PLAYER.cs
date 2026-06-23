@@ -144,7 +144,7 @@ public class PLAYER : MonoBehaviour
 
     private void Die()
     {
-        gameObject.SetActive(false);
+        canTakeDMG = false;
         isAlive = false;
         GAME_MANAGER.Instance.GAMEOVER();
     }

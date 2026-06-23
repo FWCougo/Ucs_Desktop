@@ -32,20 +32,27 @@ public class DEVIL_SCRIPT : MonoBehaviour
         StartCoroutine(StartGameEnum());
     }
 
+    public void EnteredUpgradeScreen()
+    {
+        StartCoroutine(BusinessDevil());
+    }
+
+    IEnumerator BusinessDevil()
+    {
+        mainSprite.sprite = laserDevil;
+        devilTremendo = transform.DOShakePosition(0.5f, 1, 50, 90);
+
+        yield return new WaitForSeconds(0.5f);
+        devilTremendo.Kill();
+
+        shadowSprite.sprite = businessDevil;
+        mainSprite.sprite = businessDevil;
+    }
+
     IEnumerator StartGameEnum()
     {
         mainSprite.sprite = laserDevil;
-        devilTremendo = transform.DOShakePosition(1, 1, 20, 90).SetLoops(-1, LoopType.Yoyo);
-
-        yield return new WaitForSeconds(0.5f);
-
-        devilTremendo.Kill();
-        mainSprite.sprite = businessDevil;
-
-        yield return new WaitForSeconds(2);
-
-        mainSprite.sprite = laserDevil;
-        devilTremendo = transform.DOShakePosition(1, 1, 20, 90).SetLoops(-1, LoopType.Yoyo);
+        devilTremendo = transform.DOShakePosition(0.5f, 1, 50, 90);
 
         yield return new WaitForSeconds(0.5f);
 

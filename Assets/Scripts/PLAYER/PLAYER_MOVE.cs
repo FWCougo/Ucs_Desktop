@@ -10,6 +10,8 @@ public class PLAYER_MOVE : MonoBehaviour
     private CharacterController characterController;
     [SerializeField]
     private INPUT_MANAGER inputManager;
+    [SerializeField]
+    private PLAYER_WEAPONS p_Weapons;
     [Header("MOVEMENT SPEED")]
     [SerializeField]
     private float speed;
@@ -44,6 +46,7 @@ public class PLAYER_MOVE : MonoBehaviour
     private void Awake()
     {
         inputManager = GetComponent<INPUT_MANAGER>();
+        p_Weapons = GetComponent<PLAYER_WEAPONS>();
     }
 
     private void Start()
@@ -103,18 +106,22 @@ public class PLAYER_MOVE : MonoBehaviour
     {
         Vector3 _mouseDir = inputManager.MouseDir;
         angleDir = (Mathf.Atan2(_mouseDir.x, _mouseDir.y) * Mathf.Rad2Deg);
+        p_Weapons.ChangeLayer(p_Sprite.sortingOrder + 1);
 
         if (_mouseDir.x < 0)
         {
             p_Sprite.flipX = true;
+            p_Weapons.FlipGun(true);
         }
         else
         {
             p_Sprite.flipX = false;
+            p_Weapons.FlipGun(false);
         }
         if (angleDir > -45f && angleDir < 45f)
         {
             p_Sprite.sprite = backSprite;
+            p_Weapons.ChangeLayer(p_Sprite.sortingOrder -1);
         }
         else if (angleDir > 135f || angleDir < -135f)
         {

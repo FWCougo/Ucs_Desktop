@@ -31,6 +31,8 @@ public class INPUT_MANAGER : MonoBehaviour
 
     void UpdateMousePosition()
     {
+        if (GAME_MANAGER.Instance.isDead) return;
+
         Vector2 mouseScreenPosition = Mouse.current.position.ReadValue();
 
         RaycastHit hit;
@@ -52,6 +54,8 @@ public class INPUT_MANAGER : MonoBehaviour
     public void onMove(InputAction.CallbackContext _context)
     {
 
+        if (GAME_MANAGER.Instance.isDead) return;
+
         InputActionPhase _phase = _context.phase;
         
         if(_phase == InputActionPhase.Performed)
@@ -64,7 +68,9 @@ public class INPUT_MANAGER : MonoBehaviour
 
 
     public void onAttack(InputAction.CallbackContext _context)
-    {       
+    {
+        if (GAME_MANAGER.Instance.isDead) return;
+
         if (_context.performed)
         {
             p_weapon.UseWeapon(mouseDir);
@@ -73,6 +79,8 @@ public class INPUT_MANAGER : MonoBehaviour
 
     public void onPause(InputAction.CallbackContext _context)
     {
+        if (GAME_MANAGER.Instance.isDead) return;
+
         if (_context.performed)
         {
             GAME_MANAGER.Instance.PauseGame();

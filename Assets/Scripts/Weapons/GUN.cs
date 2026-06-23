@@ -18,6 +18,8 @@ public class GUN : WEAPON
 
     private PLAYER_WEAPONS p_WEAPON;
 
+    [SerializeField] private SpriteRenderer g_Sprite;
+
     private void Start()
     {
         p_WEAPON = GetComponentInParent<PLAYER_WEAPONS>();
@@ -26,9 +28,19 @@ public class GUN : WEAPON
         clip = gun_so.shotClip;
     }
 
+    public override void flipWeapon(bool flipped)
+    {
+        g_Sprite.flipX = flipped;
+    }
+
     public override void UseWeapon(Vector3 dir)
     {
         Shoot();
+    }
+
+    public override void changeLayer(int layer)
+    {
+        g_Sprite.sortingOrder = layer;
     }
 
     public virtual void Shoot()
@@ -101,5 +113,4 @@ public class GUN : WEAPON
 
         yield return null;
     }
-
 }

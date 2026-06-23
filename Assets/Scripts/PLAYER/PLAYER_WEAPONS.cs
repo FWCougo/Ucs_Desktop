@@ -93,6 +93,16 @@ public class PLAYER_WEAPONS : MonoBehaviour
             aim_Trans.DOScale(5, 0.25f);
         });
     }
+    public void FlipGun(bool _flipped)
+    {
+        if (currentGun == null) { return; }
+        currentGun.flipWeapon(_flipped);
+    }
+    public void ChangeLayer(int _layer)
+    {
+        if (currentGun == null) { return; }
+        currentGun.changeLayer(_layer);
+    }
 
 
 }

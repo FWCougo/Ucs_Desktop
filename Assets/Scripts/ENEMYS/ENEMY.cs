@@ -69,6 +69,8 @@ public class ENEMY : MonoBehaviour, IDamageable, IGiveDamage
     }
     public virtual void Die()
     {
+        GAME_MANAGER.Instance.enemyCount--;
+
         DropItem();
         dmg = 0;
         isAlive = false;

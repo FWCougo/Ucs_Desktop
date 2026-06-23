@@ -91,8 +91,8 @@ public class EYESPAWNER_ENEMY : ENEMY
         {
             LITTLEEYE_ENEMY _littleEye = Instantiate(littleEye_prefab, spawnLittleEye.position, Quaternion.identity);
             _littleEye.enemySprite.sortingOrder = 2;
-
-            if(isAlive)
+            GAME_MANAGER.Instance.enemyCount++;
+            if (isAlive)
             {
                 StartCoroutine(DoStuff());
             }

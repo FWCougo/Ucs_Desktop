@@ -52,6 +52,7 @@ MonoBehaviour:
   canShoot: 1
   source: {fileID: 585886710943816946}
   clip: {fileID: 8300000, guid: 83967bd8ed153ce4bbd55802b066f942, type: 3}
+  g_Sprite: {fileID: 7802395461232267973}
   boca_transform: {fileID: 6102602752294908167}
   direction: {x: 0, y: 0, z: 0}
   randomness: 0.5
@@ -269,7 +270,7 @@ Transform:
   m_GameObject: {fileID: 7239801799232917392}
   serializedVersion: 2
   m_LocalRotation: {x: -0.000018101555, y: 0.9202836, z: 0.39125204, w: -0.00000007208292}
-  m_LocalPosition: {x: 0.2119981, y: 0.058006115, z: -0.00033343435}
+  m_LocalPosition: {x: 0, y: 0.058006115, z: -0.00033343435}
   m_LocalScale: {x: 0.19999991, y: 0.19999996, z: 0.19999994}
   m_ConstrainProportionsScale: 0
   m_Children: []

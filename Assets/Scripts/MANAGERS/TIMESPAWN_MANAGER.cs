@@ -17,7 +17,7 @@ public class TIMESPAWN_MANAGER : MonoBehaviour
     private bool isSpawning = false;
 
     [SerializeField]
-    private int clockTime = 6;
+    private int clockTime = 11;
 
     [SerializeField]
     private float elapsedTime;
@@ -37,6 +37,8 @@ public class TIMESPAWN_MANAGER : MonoBehaviour
     [SerializeField] AudioSource source;
     [SerializeField] AudioClip clip_Bell;
 
+    [SerializeField] private GameObject WIN_GO;
+
     private void Awake()
     {
         Instance = this;
@@ -46,17 +48,20 @@ public class TIMESPAWN_MANAGER : MonoBehaviour
     {
         changeStuffIDK = 0;
         timeSlider.value = 0;
-        clockTime = 6;
+        clockTime = 11;
         startedRound = false;
         isSpawning = false;
         spawnRate = 3;
+
+        WIN_GO.SetActive(false);
     }
 
     public void StartRound()
     {
         startedRound = true;
         isSpawning = true;
-        currentEnemyList = enemyPool[round].enemyList;
+        currentEnemyList = enemyPool[0].enemyList;
+        spawnRate = enemyPool[0].spawnRate;
         StartCoroutine(SpawnEnemies());
     }
 
@@ -64,14 +69,19 @@ public class TIMESPAWN_MANAGER : MonoBehaviour
     {
         if (!startedRound) return;
 
-        elapsedTime = Time.time;
+        elapsedTime += Time.deltaTime;
         changeStuffIDK += Time.deltaTime;
 
         timeSlider.value = elapsedTime;
 
-        if (changeStuffIDK > 60)
+        if (changeStuffIDK > 60 && clockTime != 6)
         {
             ChangeRound();
+        }
+
+        if(clockTime == 6 && GAME_MANAGER.Instance.enemyCount == 0)
+        {
+            WIN_GO.SetActive(true);
         }
     }
 
@@ -80,10 +90,12 @@ public class TIMESPAWN_MANAGER : MonoBehaviour
         source.PlayOneShot(clip_Bell);
         round++;
         //Pega a lista de Inimigos deste round
-        currentEnemyList = enemyPool[round].enemyList;
+        currentEnemyList = enemyPool[round-1].enemyList;
         changeStuffIDK = 0;
         ChangeTime();
-        spawnRate -= 0.1f;
+        spawnRate = enemyPool[round-1].spawnRate;
+
+        //spawnRate -= 0.1f;
     }
 
     private void ChangeTime()
@@ -102,6 +114,12 @@ public class TIMESPAWN_MANAGER : MonoBehaviour
         }
 
         time_TXT.text = $"{clockTime} {postTime}";
+
+
+        if (clockTime == 6)
+        {
+            isSpawning = false;
+        }
     }
 
     IEnumerator SpawnEnemies()
@@ -112,14 +130,18 @@ public class TIMESPAWN_MANAGER : MonoBehaviour
 
             //SELECT SPAWN POINT
             int _spawnPointIndex = UnityEngine.Random.Range(0, spawnPoints.Length);
-            Transform _spawnPoint = spawnPoints[_spawnPointIndex];
+            Vector3 _spawnPoint = spawnPoints[_spawnPointIndex].position;
+
+            Vector2 randomCircle = UnityEngine.Random.insideUnitCircle * 4;
+            Vector3 spawnPos = _spawnPoint + new Vector3(randomCircle.x, 0f, randomCircle.y);
 
             int selectedEnemy = UnityEngine.Random.Range(0,currentEnemyList.Length);
 
             ENEMY _enemy = currentEnemyList[selectedEnemy];
 
             //SPAWN MONSTER (LATER CHANGE SO IT USES OBJECT POOLING)
-            Instantiate(_enemy, _spawnPoint.position, Quaternion.identity);
+            Instantiate(_enemy, spawnPos, Quaternion.identity);
+            GAME_MANAGER.Instance.enemyCount++;
 
             yield return new WaitForSeconds(spawnRate);
 
@@ -132,4 +154,6 @@ public class TIMESPAWN_MANAGER : MonoBehaviour
 public class ENEMYPOOL
 {
     public ENEMY[] enemyList;
+
+    public float spawnRate = 3;
 }
