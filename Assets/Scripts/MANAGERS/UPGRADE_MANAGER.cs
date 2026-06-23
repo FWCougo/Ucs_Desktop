@@ -185,8 +185,17 @@ public class UPGRADE_MANAGER : MonoBehaviour
         PlayerPrefs.SetInt("SPEED_LV_KEY",0);
         PlayerPrefs.SetInt("DMG_LV_KEY",0);
 
+        regenLV = 0;
+        hpLV = 0;
+        speedLV = 0;
+        dmgLV = 0;
+
         CheckRegenLV();
         CheckHPLV();
+        CheckDmgLV();
+        CheckSpeedLV();
+
+        GAME_MANAGER.Instance.ResetCoins();
     }
 
     private void Start()

@@ -149,6 +149,14 @@ public class GAME_MANAGER : MonoBehaviour
         coinsGame_TXT.text = $"COINS : {coins}X";
         PlayerPrefs.SetInt("COIN_KEY", coins);
     }
+    public void ResetCoins()
+    {
+        coins = 0;
+        coinsMenu_TXT.text = $"{coins}";
+        coinsUpgrade_TXT.text = $"{coins}";
+        coinsGame_TXT.text = $"COINS : {coins}X";
+        PlayerPrefs.SetInt("COIN_KEY", coins);
+    }
     public int GetCoins()
     {
         return coins;

@@ -7,6 +7,8 @@ public class PLAYER : MonoBehaviour
 {
     [SerializeField] private SpriteRenderer p_sprite;
 
+    [SerializeField] private PLAYER_MOVE p_move;
+
     [Header("Hitbox")]
     [SerializeField] private Vector3 hitboxCenter = Vector3.zero;
     [SerializeField] private Vector3 hitboxSize = Vector3.one;
@@ -146,6 +148,7 @@ public class PLAYER : MonoBehaviour
     {
         canTakeDMG = false;
         isAlive = false;
+        p_move.ChangeSpeed(0);
         GAME_MANAGER.Instance.GAMEOVER();
     }
 
