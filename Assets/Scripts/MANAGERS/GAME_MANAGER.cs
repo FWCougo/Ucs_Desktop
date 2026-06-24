@@ -79,11 +79,11 @@ public class GAME_MANAGER : MonoBehaviour
     {
         mouseSprite.DOFade(1, 1).OnComplete(() =>
         {
-            mouseSprite.DOFade(0, 8);
+            mouseSprite.DOFade(0, 15);
         });
         wasdSprite.DOFade(1, 1).OnComplete(() =>
         {
-            wasdSprite.DOFade(0, 8);
+            wasdSprite.DOFade(0, 15);
         });
         
     }
