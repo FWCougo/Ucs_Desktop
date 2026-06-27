@@ -27,7 +27,6 @@ public class GAME_MANAGER : MonoBehaviour
 
     [Header("COINS")]
     [SerializeField] private int coins = 0;
-    [SerializeField] private TMP_Text coinsMenu_TXT;
     [SerializeField] private TMP_Text coinsGame_TXT;
     [SerializeField] private TMP_Text coinsUpgrade_TXT;
 
@@ -97,6 +96,8 @@ public class GAME_MANAGER : MonoBehaviour
 
     public void ReloadMainMenu()
     {
+        Time.timeScale = 1;
+        DOTween.KillAll();
         SceneManager.LoadScene(0);
         killCount = 0;
     }
@@ -137,14 +138,12 @@ public class GAME_MANAGER : MonoBehaviour
     public void LoadCoins()
     {
         coins = PlayerPrefs.GetInt("COIN_KEY");
-        coinsMenu_TXT.text = $"{coins}";
         coinsUpgrade_TXT.text = $"{coins}";
         coinsGame_TXT.text = $"COINS : {coins}X";
     }
     public void ChangeCoins(int _i)
     {
         coins += _i;
-        coinsMenu_TXT.text = $"{coins}";
         coinsUpgrade_TXT.text = $"{coins}";
         coinsGame_TXT.text = $"COINS : {coins}X";
         PlayerPrefs.SetInt("COIN_KEY", coins);
@@ -152,7 +151,6 @@ public class GAME_MANAGER : MonoBehaviour
     public void ResetCoins()
     {
         coins = 0;
-        coinsMenu_TXT.text = $"{coins}";
         coinsUpgrade_TXT.text = $"{coins}";
         coinsGame_TXT.text = $"COINS : {coins}X";
         PlayerPrefs.SetInt("COIN_KEY", coins);

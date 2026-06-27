@@ -34372,7 +34372,6 @@ MonoBehaviour:
   killCount: 0
   kill_TXT: {fileID: 1013319620}
   coins: 0
-  coinsMenu_TXT: {fileID: 775000361}
   coinsGame_TXT: {fileID: 1074830197}
   coinsUpgrade_TXT: {fileID: 1994309568}
   extraDMG: 0

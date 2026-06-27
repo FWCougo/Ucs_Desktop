@@ -55,10 +55,11 @@ public class UPGRADE_MANAGER : MonoBehaviour
     public void CheckRegenLV()
     {
         regenOptions.AumentarLV(regenLV);
-        if(regenLV > 0)
-        {
-            p_Passives.ReceberPassivaREGEN(willOfGod, regenLV);
-        }
+        p_Passives.ReceberPassivaREGEN(willOfGod, regenLV);
+        //  if(regenLV > 0)
+        //  {
+        //      p_Passives.ReceberPassivaREGEN(willOfGod, regenLV);
+        //  }
     }
 
     #endregion
@@ -94,10 +95,11 @@ public class UPGRADE_MANAGER : MonoBehaviour
     public void CheckHPLV()
     {
         hpOptions.AumentarLV(hpLV);
-        if (hpLV > 0)
-        {
-            p_Passives.ReceberPassivaHP(hp_PASSIVA, hpLV);
-        }
+        p_Passives.ReceberPassivaHP(hp_PASSIVA, hpLV);
+        //   if (hpLV > 0)
+        //   {
+        //       p_Passives.ReceberPassivaHP(hp_PASSIVA, hpLV);
+        //   }
     }
     #endregion
 
@@ -132,10 +134,11 @@ public class UPGRADE_MANAGER : MonoBehaviour
     public void CheckSpeedLV()
     {
         speedOptions.AumentarLV(speedLV);
-        if (speedLV > 0)
-        {
-            p_Passives.ReceberPassivaSPEED(speed_PASSIVA, speedLV);
-        }
+        p_Passives.ReceberPassivaSPEED(speed_PASSIVA, speedLV);
+       // if (speedLV > 0)
+       // {
+       //     p_Passives.ReceberPassivaSPEED(speed_PASSIVA, speedLV);
+       // }
     }
     #endregion
 
@@ -170,10 +173,11 @@ public class UPGRADE_MANAGER : MonoBehaviour
     public void CheckDmgLV()
     {
         dmgOptions.AumentarLV(dmgLV);
-        if (dmgLV > 0)
-        {
-            p_Passives.ReceberPassivaDMG(dmg_PASSIVA, dmgLV);
-        }
+        p_Passives.ReceberPassivaDMG(dmg_PASSIVA, dmgLV);
+       // if (dmgLV > 0)
+       // {
+       //     p_Passives.ReceberPassivaDMG(dmg_PASSIVA, dmgLV);
+       // }
     }
     #endregion
 
