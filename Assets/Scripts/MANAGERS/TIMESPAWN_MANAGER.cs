@@ -1,3 +1,4 @@
+using DG.Tweening;
 using System;
 using System.Collections;
 using TMPro;
@@ -39,6 +40,11 @@ public class TIMESPAWN_MANAGER : MonoBehaviour
 
     [SerializeField] private GameObject WIN_GO;
 
+    [Header("Ground")]
+    [SerializeField] private SpriteRenderer groundSprite;
+    [SerializeField] private Color startColor;
+    [SerializeField] private Color endColor;
+
     private void Awake()
     {
         Instance = this;
@@ -47,6 +53,7 @@ public class TIMESPAWN_MANAGER : MonoBehaviour
     private void Start()
     {
         changeStuffIDK = 0;
+        timeSlider.maxValue = 7 * 60;
         timeSlider.value = 0;
         clockTime = 11;
         startedRound = false;
@@ -54,6 +61,8 @@ public class TIMESPAWN_MANAGER : MonoBehaviour
         spawnRate = 3;
 
         WIN_GO.SetActive(false);
+
+        groundSprite.color = startColor;
     }
 
     public void StartRound()
@@ -63,6 +72,7 @@ public class TIMESPAWN_MANAGER : MonoBehaviour
         currentEnemyList = enemyPool[0].enemyList;
         spawnRate = enemyPool[0].spawnRate;
         StartCoroutine(SpawnEnemies());
+        groundSprite.DOColor(endColor, 7 * 60);
     }
 
     private void Update()

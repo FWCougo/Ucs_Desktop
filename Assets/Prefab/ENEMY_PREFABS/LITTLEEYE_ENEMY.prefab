@@ -492,6 +492,7 @@ MonoBehaviour:
   strength: 1
   vibrato: 10
   randomness: 90
+  collider: {fileID: 3236978488591732794}
   source: {fileID: 4387575178112173340}
   coin_clip: {fileID: 8300000, guid: 313755b8473292f4f9fc984cc67dac44, type: 3}
   dmg: 0

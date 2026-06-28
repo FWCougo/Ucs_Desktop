@@ -139,20 +139,20 @@ public class GAME_MANAGER : MonoBehaviour
     {
         coins = PlayerPrefs.GetInt("COIN_KEY");
         coinsUpgrade_TXT.text = $"{coins}";
-        coinsGame_TXT.text = $"COINS : {coins}X";
+        coinsGame_TXT.text = $"{coins}";
     }
     public void ChangeCoins(int _i)
     {
         coins += _i;
         coinsUpgrade_TXT.text = $"{coins}";
-        coinsGame_TXT.text = $"COINS : {coins}X";
+        coinsGame_TXT.text = $"{coins}";
         PlayerPrefs.SetInt("COIN_KEY", coins);
     }
     public void ResetCoins()
     {
         coins = 0;
         coinsUpgrade_TXT.text = $"{coins}";
-        coinsGame_TXT.text = $"COINS : {coins}X";
+        coinsGame_TXT.text = $"{coins}";
         PlayerPrefs.SetInt("COIN_KEY", coins);
     }
     public int GetCoins()

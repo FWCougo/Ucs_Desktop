@@ -262,7 +262,7 @@ MonoBehaviour:
   - {fileID: 6521653110523753464, guid: 4d654ce5f73171042bec326a32c1be26, type: 3}
   - {fileID: 2050433979555355772, guid: 63435d4961de6a44fa194f3b83520e78, type: 3}
   enemySprite: {fileID: 7132763724137978924}
-  shadowSprite: {fileID: 0}
+  shadowSprite: {fileID: 1814570327006195447}
   HP: 0
   canTakeDMG: 1
   bloodVFXAmount: 10
@@ -272,6 +272,7 @@ MonoBehaviour:
   strength: 0.5
   vibrato: 10
   randomness: 90
+  collider: {fileID: 2777164562317836413}
   source: {fileID: 4754030559887991065}
   coin_clip: {fileID: 0}
   dmg: 0

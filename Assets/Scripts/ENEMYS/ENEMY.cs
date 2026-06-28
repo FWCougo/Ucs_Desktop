@@ -23,6 +23,9 @@ public class ENEMY : MonoBehaviour, IDamageable, IGiveDamage
     [SerializeField] private float strength = 1;
     [SerializeField] private int vibrato = 10;
     [SerializeField] private float randomness = 90;
+    [Header("COLLISION")]
+    [SerializeField]
+    private Collider collider;
     [Header("SFX")]
     [SerializeField] public AudioSource source;
     [SerializeField] public AudioClip coin_clip;
@@ -70,7 +73,7 @@ public class ENEMY : MonoBehaviour, IDamageable, IGiveDamage
     public virtual void Die()
     {
         GAME_MANAGER.Instance.enemyCount--;
-
+        collider.enabled = false;
         DropItem();
         dmg = 0;
         isAlive = false;
