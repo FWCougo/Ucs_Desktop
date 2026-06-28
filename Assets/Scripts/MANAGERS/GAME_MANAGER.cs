@@ -40,14 +40,14 @@ public class GAME_MANAGER : MonoBehaviour
     {
         Cursor.visible = true;
         killCount = 0;
-        kill_TXT.text = "KILLS: " + killCount;
+        kill_TXT.text = killCount.ToString();
     }
 
     public void IncreaseKillCount()
     {
         killCount++;
         //SPAWN_MANAGER.Instance.ReceiveKillCount();
-        kill_TXT.text = "KILLS: " + killCount;
+        kill_TXT.text = killCount.ToString();
     }
 
     public void StartGame()
