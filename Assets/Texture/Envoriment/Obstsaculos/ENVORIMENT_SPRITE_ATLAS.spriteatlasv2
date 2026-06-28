@@ -10,21 +10,6 @@ SpriteAtlasAsset:
   serializedVersion: 2
   m_MasterAtlas: {fileID: 0}
   m_ImporterData:
-    packables:
-    - {fileID: 2800000, guid: 156dd813d8966f1498571944ef036092, type: 3}
-    - {fileID: 2800000, guid: 74ed34890a04f8d42ab09f3e5007ebf6, type: 3}
-    - {fileID: 2800000, guid: f557be1c1cb09544887805e63b937044, type: 3}
-    - {fileID: 2800000, guid: 9fc7ea9de1752bd4ba50137c32dcc43e, type: 3}
-    - {fileID: 2800000, guid: f8e126f4630fd224a9f89307221bbf4f, type: 3}
-    - {fileID: 2800000, guid: 70419c944af83b94ab4e783fbbf07314, type: 3}
-    - {fileID: 2800000, guid: a27337c69c644ee42824883e7e7fdc8a, type: 3}
-    - {fileID: 2800000, guid: 6e1664b10afdd8941b0e8eb4ab7f9b07, type: 3}
-    - {fileID: 2800000, guid: 36ced949144161c468012ca51cf39084, type: 3}
-    - {fileID: 2800000, guid: 2032056dd1095dc41b69d19aa4598288, type: 3}
-    - {fileID: 2800000, guid: 3cd198fb615119d4ca1d80a2e9f720b4, type: 3}
-    - {fileID: 2800000, guid: 91dcc8a91d099614997cc8908a32f9c4, type: 3}
-    - {fileID: 2800000, guid: 749eb48743fa6334d8d5d5a6d28861dd, type: 3}
-    - {fileID: 2800000, guid: bba70dc91eeb7fc459e0b3085ecba7e1, type: 3}
-    - {fileID: 2800000, guid: 3db9db47c0097a04d997449541ca31f9, type: 3}
+    packables: []
   m_IsVariant: 0
   m_ScriptablePacker: {fileID: 0}

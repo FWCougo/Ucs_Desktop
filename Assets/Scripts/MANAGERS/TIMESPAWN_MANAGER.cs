@@ -72,7 +72,7 @@ public class TIMESPAWN_MANAGER : MonoBehaviour
         currentEnemyList = enemyPool[0].enemyList;
         spawnRate = enemyPool[0].spawnRate;
         StartCoroutine(SpawnEnemies());
-        groundSprite.DOColor(endColor, 7 * 60);
+        groundSprite.DOColor(endColor, 7 * 60).SetEase(Ease.InSine);
     }
 
     private void Update()
