@@ -5,7 +5,7 @@ using DG.Tweening;
 public class CROSS_A_RANG : WEAPON
 {
     [Header("References")]
-    [SerializeField] private Transform player_Trans;
+    [SerializeField] private Transform playerHand_Trans;
     [SerializeField] private BOOMERANG_SO boomerang_SO;
     [SerializeField] private SpriteRenderer g_Sprite;
     [SerializeField] private TrailRenderer[] trails;
@@ -32,7 +32,7 @@ public class CROSS_A_RANG : WEAPON
 
     private void Start()
     {
-        player_Trans = GetComponentInParent<PLAYER>().transform;
+        playerHand_Trans = GetComponentInParent<PLAYER_WEAPONS>().GetHand();
 
         // Cache trail times uma única vez
         trailOriginalTimes = new float[trails.Length];
@@ -42,9 +42,9 @@ public class CROSS_A_RANG : WEAPON
 
     private void OnEnable()
     {
-        if(player_Trans == null)
+        if(playerHand_Trans == null)
         {
-            player_Trans = GetComponentInParent<PLAYER>().transform;
+            playerHand_Trans = GetComponentInParent<PLAYER>().transform;
         }
 
         OnBoomerangReturned();
@@ -54,9 +54,9 @@ public class CROSS_A_RANG : WEAPON
     {
         if (!isReturning) return;
 
-        transform.position = Vector3.MoveTowards(transform.position, player_Trans.position, returnSpeed * Time.deltaTime);
+        transform.position = Vector3.MoveTowards(transform.position, playerHand_Trans.position, returnSpeed * Time.deltaTime);
 
-        if (Vector3.Distance(transform.position, player_Trans.position) < 0.2f)
+        if (Vector3.Distance(transform.position, playerHand_Trans.position) < 0.2f)
             OnBoomerangReturned();
     }
 
@@ -80,11 +80,22 @@ public class CROSS_A_RANG : WEAPON
 
                 if (damageable != null)
                 {
-                    damageable.Damage(boomerang_SO.damage);
+                    float totalDMG = boomerang_SO.damage + GAME_MANAGER.Instance.GetExtraDMG();
+                    damageable.Damage(totalDMG);
                 }
             }
 
         }
+    }
+
+    public override void flipWeapon(bool flipped)
+    {
+        
+    }
+
+    public override void changeLayer(int layer)
+    {
+        g_Sprite.sortingOrder = layer;
     }
 
     public override void UseWeapon(Vector3 dir)
@@ -106,7 +117,7 @@ public class CROSS_A_RANG : WEAPON
         canShoot = true;
 
         rotationTween.Kill();
-        transform.SetParent(player_Trans);
+        transform.SetParent(playerHand_Trans);
         transform.localPosition = Vector3.up;
         g_Sprite.transform.rotation = Quaternion.Euler(50f, 0f, 0f);
 

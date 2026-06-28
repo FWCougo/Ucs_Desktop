@@ -79,7 +79,7 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -20
   m_MaskInteraction: 0
   m_Sprite: {fileID: 923000932, guid: ee7080eda76ec824798a599fbfd81e5c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -201,8 +201,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1.67, y: 1.9104228, z: 1}
-  m_Center: {x: -0.19, y: 0.9552114, z: 0.39999998}
+  m_Size: {x: 1.8535419, y: 2.0446596, z: 2.022151}
+  m_Center: {x: -0.19000006, y: 1.0223298, z: 0.7557714}
 --- !u!1 &7053568597400209463
 GameObject:
   m_ObjectHideFlags: 0
@@ -256,7 +256,13 @@ MonoBehaviour:
   isAlive: 1
   enemy_SO: {fileID: 11400000, guid: 84f971534ce99bb4e81a9eb5377e0542, type: 2}
   currentPlayer: {fileID: 0}
+  drops:
+  - {fileID: 3829023614283986933, guid: 0a34cca8ef561f247b582f050eda0236, type: 3}
+  - {fileID: 6521653110523753464, guid: e11b3af652bb11e40a3312078dff23d4, type: 3}
+  - {fileID: 6521653110523753464, guid: 4d654ce5f73171042bec326a32c1be26, type: 3}
+  - {fileID: 2050433979555355772, guid: 63435d4961de6a44fa194f3b83520e78, type: 3}
   enemySprite: {fileID: 7132763724137978924}
+  shadowSprite: {fileID: 1814570327006195447}
   HP: 0
   canTakeDMG: 1
   bloodVFXAmount: 10
@@ -266,11 +272,14 @@ MonoBehaviour:
   strength: 0.5
   vibrato: 10
   randomness: 90
+  collider: {fileID: 2777164562317836413}
   source: {fileID: 4754030559887991065}
+  coin_clip: {fileID: 0}
   dmg: 0
   speedRange: 1
   rotationSpeed: 0.5
   agent: {fileID: 4928738427899066645}
+  rotAmout: 20
 --- !u!195 &4928738427899066645
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -469,7 +478,7 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -10
   m_MaskInteraction: 0
   m_Sprite: {fileID: -1413879171, guid: ac064833ad64e26459f110d159c488a9, type: 3}
   m_Color: {r: 0, g: 0, b: 0, a: 1}
@@ -506,13 +515,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8388893442368242098}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.42101005, y: -0.07898997, z: 0.03683362, w: 0.90285903}
+  m_LocalRotation: {x: 0.535255, y: -0.07350644, z: 0.046828765, w: 0.8401821}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 5, y: 5, z: 5}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4170875136097740685}
-  m_LocalEulerAnglesHint: {x: 50, y: -10, z: 0}
+  m_LocalEulerAnglesHint: {x: 65, y: -10, z: 0}
 --- !u!212 &7132763724137978924
 SpriteRenderer:
   serializedVersion: 2

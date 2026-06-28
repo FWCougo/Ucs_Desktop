@@ -13,11 +13,11 @@ MonoBehaviour:
   m_Name: Shotgun_SO
   m_EditorClassIdentifier: Assembly-CSharp::GUN_SO
   itemName: Shotgun
-  itemSprite: {fileID: -1055791482, guid: 992b5a339b33af34389e29d18f173e7c, type: 3}
-  cadency: 0.3
+  itemSprite: {fileID: -849249960, guid: 0683699de7e13714abb0d2492d7e2126, type: 3}
+  cadency: 0.4
   damage: 3
   maxAmmo: 8
   realoadTime: 3
   bulletPrefab: {fileID: 2686044816604900693, guid: 5f9e1e2a979468b4b88e597526ee3f1b, type: 3}
-  bulletLifeSpan: 0.3
+  bulletLifeSpan: 0.5
   shotClip: {fileID: 8300000, guid: 83967bd8ed153ce4bbd55802b066f942, type: 3}

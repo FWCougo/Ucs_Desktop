@@ -2,5 +2,10 @@ using UnityEngine;
 
 public abstract class WEAPON : MonoBehaviour
 {
-    public abstract void UseWeapon(Vector3 dir);
+    public bool isMainWeapon = false;
+
+    public abstract void UseWeapon(Vector3 dir);    
+    public abstract void flipWeapon(bool flipped);
+    public abstract void changeLayer(int layer);
+
 }

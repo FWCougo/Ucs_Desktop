@@ -1,10 +1,13 @@
-﻿using System.Collections;
+﻿using DG.Tweening;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class PLAYER : MonoBehaviour
 {
     [SerializeField] private SpriteRenderer p_sprite;
+
+    [SerializeField] private PLAYER_MOVE p_move;
 
     [Header("Hitbox")]
     [SerializeField] private Vector3 hitboxCenter = Vector3.zero;
@@ -24,7 +27,7 @@ public class PLAYER : MonoBehaviour
     [Header("Audio")]
     [SerializeField] private AudioSource combatASource;
     [SerializeField] private AudioClip[] dmgAClips;
-
+    [SerializeField] private AudioClip eatClip;
     
 
     private void Start()
@@ -38,8 +41,45 @@ public class PLAYER : MonoBehaviour
     {
         maxHp = _maxHP;
         hp = maxHp;
+
+        UpdateLifeIMG();
     }
 
+    public void EatFood(float _hp)
+    {
+        combatASource.pitch = 1;
+        combatASource.PlayOneShot(eatClip);
+
+        ReceiveHealth(_hp);
+    }
+
+    public void ReceiveHealth(float _hp)
+    {
+        hp += _hp;
+
+        if(hp >= maxHp)
+        {
+            hp = maxHp;
+        }
+
+        UpdateLifeIMG();
+
+        FlashHEAL();
+    }
+
+    // --- Update life IMG ----------------------------------
+    private void UpdateLifeIMG()
+    {
+        hpIMG.fillAmount = hp / maxHp;
+    }
+
+    private void FlashHEAL()
+    {
+        Color _col = Color.green;
+        p_sprite.DOColor(_col, 0.25f).OnComplete(()=>
+            p_sprite.DOColor(Color.white, 0.25f)
+        );
+    }
 
     // ─── Physics ─────────────────────────────────────────────────────
 
@@ -80,9 +120,10 @@ public class PLAYER : MonoBehaviour
         canTakeDMG = false;
 
         hp = Mathf.Max(hp - dmg, 0f);
-        hpIMG.fillAmount = hp / maxHp;
+        UpdateLifeIMG();
 
         CAMERA_SHAKE.Instance.ShakeMedium();
+        combatASource.pitch = 1;
         combatASource.PlayOneShot(dmgAClips[Random.Range(0, dmgAClips.Length)]);
         StartCoroutine(FlashDMG());
 
@@ -105,8 +146,9 @@ public class PLAYER : MonoBehaviour
 
     private void Die()
     {
-        gameObject.SetActive(false);
+        canTakeDMG = false;
         isAlive = false;
+        p_move.ChangeSpeed(0);
         GAME_MANAGER.Instance.GAMEOVER();
     }
 

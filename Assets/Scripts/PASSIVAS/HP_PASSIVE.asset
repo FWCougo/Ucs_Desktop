@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f2d7811c81fc6644b1b19adf2ccaa72, type: 3}
+  m_Name: HP_PASSIVE
+  m_EditorClassIdentifier: Assembly-CSharp::PASSIVA_SO
+  nome: +VIDA
+  sprite: {fileID: -1854250155, guid: 8bb0d4c8b1d7a7d4d9b676b4b3fd8d51, type: 3}
+  preco: 0a00000019000000280000003200000064000000

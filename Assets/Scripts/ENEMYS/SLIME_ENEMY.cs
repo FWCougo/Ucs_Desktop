@@ -91,7 +91,7 @@ public class SLIME_ENEMY : ENEMY
             shotDir = RandomizeDirection(shotDir, 10);
 
             _bullet.gameObject.SetActive(true);
-            _bullet.ReceiveDirection(shotDir, 1.5f);
+            _bullet.ReceiveDirection(shotDir, 0.9f);
         }
 
         yield return null;
@@ -136,15 +136,11 @@ public class SLIME_ENEMY : ENEMY
 
     public override void Die()
     {
+        base.Die();
 
-        source.PlayOneShot(coin_clip);
-        
+        source.PlayOneShot(coin_clip);        
 
         agent.isStopped = true;
-        isAlive = false;
-
-        bloodSplatter_GO.transform.SetParent(null);
-        bloodSplatter_GO.SetActive(true);
 
         Vector3 rot = enemySprite.transform.rotation.eulerAngles;
         rot.x = 89;

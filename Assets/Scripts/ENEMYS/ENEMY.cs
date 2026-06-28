@@ -6,8 +6,11 @@ public class ENEMY : MonoBehaviour, IDamageable, IGiveDamage
     public bool isAlive = true;
     public ENEMY_SO enemy_SO;
     public Transform currentPlayer;
+    [Header("ITEM POOL")]
+    public PICKUP[] drops;
     [Header("Sprite")]
     public SpriteRenderer enemySprite;
+    public SpriteRenderer shadowSprite;
     [Header("HP")]
     [SerializeField] private float HP;
     [SerializeField] private bool canTakeDMG = true;
@@ -20,6 +23,9 @@ public class ENEMY : MonoBehaviour, IDamageable, IGiveDamage
     [SerializeField] private float strength = 1;
     [SerializeField] private int vibrato = 10;
     [SerializeField] private float randomness = 90;
+    [Header("COLLISION")]
+    [SerializeField]
+    private Collider collider;
     [Header("SFX")]
     [SerializeField] public AudioSource source;
     [SerializeField] public AudioClip coin_clip;
@@ -39,10 +45,13 @@ public class ENEMY : MonoBehaviour, IDamageable, IGiveDamage
         bloodSplatter_GO.SetActive(false);
         InstantiateBloodVFX();
         FindClosestPlayer();
+        canTakeDMG = true;
     }
     // ─── IDamageable ────────────────────────────────────────────────
     public void Damage(float dmg)
     {
+        print("DMG RECEIVED: " +dmg);
+
         if (canTakeDMG)
             StartCoroutine(TakeDamage(dmg));
     }
@@ -63,10 +72,39 @@ public class ENEMY : MonoBehaviour, IDamageable, IGiveDamage
     }
     public virtual void Die()
     {
+        GAME_MANAGER.Instance.enemyCount--;
+        collider.enabled = false;
+        DropItem();
+        dmg = 0;
         isAlive = false;
         bloodSplatter_GO.transform.SetParent(null);
         bloodSplatter_GO.SetActive(true);
-        gameObject.SetActive(false);
+    }
+    void DropItem()
+    {
+        int _item = Random.Range(0, 100);
+        PICKUP _dropItem;
+        if(_item < 5) //Gun
+        {
+            _dropItem = drops[0];
+        }
+        else if(_item < 10) //Pizza
+        {
+            _dropItem = drops[1];
+        }
+        else if(_item < 20) //Chicken
+        {
+            _dropItem = drops[2];
+        }
+        else //Coin
+        {
+            _dropItem = drops[3];
+        }
+
+        Vector3 spawnPos = transform.position;
+        spawnPos.y = 0.01f;
+
+        Instantiate(_dropItem, spawnPos, Quaternion.identity);
     }
     // ─── VFX ────────────────────────────────────────────────────────
     private void InstantiateBloodVFX()
