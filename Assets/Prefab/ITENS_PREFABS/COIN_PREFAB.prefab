@@ -238,8 +238,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   playerManager: {fileID: 0}
-  spriteTrans: {fileID: 467747609167411021}
-  spriteShadowTrans: {fileID: 3660145310698057307}
+  spriteTrans: {fileID: 7664434638823658731}
+  spriteShadowTrans: {fileID: 1646645651248767240}
   col: {fileID: 6714301173124396076}
   yMoveAmount: 3
   scaleAmount: 0.75

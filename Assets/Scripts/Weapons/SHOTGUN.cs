@@ -45,7 +45,7 @@ public class SHOTGUN : GUN
             {
                 BULLET_PLAYER _bullet = Instantiate(gun_so.bulletPrefab, boca_transform.position, Quaternion.identity).GetComponent<BULLET_PLAYER>();
                 Vector3 spreadDir = SpreadDirection(direction, 40f, i, bulletCount);
-                _bullet.ReceiveDirection(spreadDir, gun_so.bulletLifeSpan);
+                _bullet.ReceiveDirection(spreadDir, gun_so.bulletLifeSpan, false);
             }
         }
     }

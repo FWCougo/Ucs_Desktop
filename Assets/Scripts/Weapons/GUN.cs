@@ -75,8 +75,6 @@ public class GUN : WEAPON
 
     IEnumerator ReloadCoroutine()
     {
-        print("Reloading " + gun_so.itemName);
-
         float waitTime = gun_so.realoadTime;
 
         yield return new WaitForSeconds(waitTime);
@@ -91,8 +89,6 @@ public class GUN : WEAPON
         source.PlayOneShot(clip);
 
         canShoot = false;
-
-        print("Shooting " + gun_so.itemName);
 
         currentAmmo--;
         if (!isMainWeapon)

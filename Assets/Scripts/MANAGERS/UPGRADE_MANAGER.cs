@@ -12,6 +12,8 @@ public class UPGRADE_MANAGER : MonoBehaviour
     [SerializeField] private AudioClip cantBuy_Clip;
     [SerializeField] private AudioClip couldBuy_Clip;
 
+    [SerializeField] private int moneySpent = 0;
+
     IEnumerator ShowTXT(string _TXT, Color _c)
     {
         screen_TXT.text = _TXT;
@@ -42,6 +44,8 @@ public class UPGRADE_MANAGER : MonoBehaviour
             source.PlayOneShot(cantBuy_Clip);
             return; 
         }
+
+        ChangeMoneySpent(_neededCoins);
 
         StartCoroutine(ShowTXT("COMPRA BEM SUCEDIDA", Color.green));
         source.PlayOneShot(couldBuy_Clip);
@@ -83,6 +87,8 @@ public class UPGRADE_MANAGER : MonoBehaviour
             return;
         }
 
+        ChangeMoneySpent(_neededCoins);
+
         StartCoroutine(ShowTXT("COMPRA BEM SUCEDIDA", Color.green));
         source.PlayOneShot(couldBuy_Clip);
 
@@ -121,6 +127,8 @@ public class UPGRADE_MANAGER : MonoBehaviour
             source.PlayOneShot(cantBuy_Clip);
             return;
         }
+
+        ChangeMoneySpent(_neededCoins);
 
         StartCoroutine(ShowTXT("COMPRA BEM SUCEDIDA", Color.green));
         source.PlayOneShot(couldBuy_Clip);
@@ -161,6 +169,8 @@ public class UPGRADE_MANAGER : MonoBehaviour
             return;
         }
 
+        ChangeMoneySpent(_neededCoins);
+
         StartCoroutine(ShowTXT("COMPRA BEM SUCEDIDA", Color.green));
         source.PlayOneShot(couldBuy_Clip);
 
@@ -181,6 +191,15 @@ public class UPGRADE_MANAGER : MonoBehaviour
     }
     #endregion
 
+
+
+    private void ChangeMoneySpent(int _i)
+    {
+        moneySpent += _i;
+
+        PlayerPrefs.SetInt("MONEY_SPENT_KEY", moneySpent);
+    }
+
     [ContextMenu("RESETAR_NIVEIS")]
     public void ResetUpgrades()
     {
@@ -189,10 +208,36 @@ public class UPGRADE_MANAGER : MonoBehaviour
         PlayerPrefs.SetInt("SPEED_LV_KEY",0);
         PlayerPrefs.SetInt("DMG_LV_KEY",0);
 
+        GAME_MANAGER.Instance.ChangeCoins(moneySpent);
+
         regenLV = 0;
         hpLV = 0;
         speedLV = 0;
         dmgLV = 0;
+        moneySpent = 0;
+
+        CheckRegenLV();
+        CheckHPLV();
+        CheckDmgLV();
+        CheckSpeedLV();
+
+        PlayerPrefs.SetInt("MONEY_SPENT_KEY", 0);
+    }
+
+    [ContextMenu("RESETAR_NIVEIS")]
+    public void ResetGame()
+    {
+        PlayerPrefs.SetInt("REGEN_LV_KEY", 0);
+        PlayerPrefs.SetInt("HP_LV_KEY", 0);
+        PlayerPrefs.SetInt("SPEED_LV_KEY", 0);
+        PlayerPrefs.SetInt("DMG_LV_KEY", 0);
+        PlayerPrefs.SetInt("MONEY_SPENT_KEY", 0);
+
+        regenLV = 0;
+        hpLV = 0;
+        speedLV = 0;
+        dmgLV = 0;
+        moneySpent = 0;
 
         CheckRegenLV();
         CheckHPLV();
@@ -210,6 +255,7 @@ public class UPGRADE_MANAGER : MonoBehaviour
         hpLV = PlayerPrefs.GetInt("HP_LV_KEY");
         speedLV = PlayerPrefs.GetInt("SPEED_LV_KEY");
         dmgLV = PlayerPrefs.GetInt("DMG_LV_KEY");
+        moneySpent = PlayerPrefs.GetInt("MONEY_SPENT_KEY");
 
         CheckRegenLV();
         CheckHPLV();

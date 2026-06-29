@@ -17,8 +17,8 @@ public class PICKUP_COIN : PICKUP
     IEnumerator Disable()
     {
         col.enabled = false;
-        spriteTrans.SetActive(false);
-        spriteShadowTrans.SetActive(false);
+        spriteTrans.gameObject.SetActive(false);
+        spriteShadowTrans.gameObject.SetActive(false);
 
         while (source.isPlaying)
         {

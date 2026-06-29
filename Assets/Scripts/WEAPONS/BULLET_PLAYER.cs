@@ -13,6 +13,8 @@ public class BULLET_PLAYER : MonoBehaviour
 
     [SerializeField] private float DMG = 5;
 
+    private bool piercing;
+
     float normalPos;
 
     public float Damage => DMG + GAME_MANAGER.Instance.GetExtraDMG();
@@ -22,10 +24,12 @@ public class BULLET_PLAYER : MonoBehaviour
         normalPos = bulletSprite.localPosition.y;
     }
 
-    public void ReceiveDirection(Vector3 dir, float lifeSpan)
+    public void ReceiveDirection(Vector3 dir, float lifeSpan, bool _piercing)
     {
         bulletDir = dir; // dir já deve chegar normalizado de quem chama
         //StartCoroutine(Disable(lifeSpan));
+
+        piercing = _piercing;
 
         Destroy(gameObject, lifeSpan);
 
@@ -50,7 +54,11 @@ public class BULLET_PLAYER : MonoBehaviour
             if (damageable != null)
             {
                 damageable.Damage(Damage);
-                Destroy(gameObject);
+
+                if (!piercing)
+                {
+                    Destroy(gameObject);
+                }
             }
         }
     }

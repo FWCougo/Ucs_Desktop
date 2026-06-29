@@ -32,8 +32,6 @@ public class EYESPAWNER_ENEMY : ENEMY
     {
         base.Die();
 
-        source.PlayOneShot(coin_clip);
-
         Vector3 rot = enemySprite.transform.rotation.eulerAngles;
         rot.x = 89;
         enemySprite.transform.DOLocalRotate(rot, 1f, RotateMode.Fast).OnComplete(() =>

@@ -70,9 +70,13 @@ MonoBehaviour:
   strength: 0.5
   vibrato: 10
   randomness: 90
-  collider: {fileID: 5942948411684658009}
+  col: {fileID: 5942948411684658009}
   source: {fileID: 8942733375412800611}
-  coin_clip: {fileID: 8300000, guid: 313755b8473292f4f9fc984cc67dac44, type: 3}
+  death_clips:
+  - {fileID: 8300000, guid: e3b25bae57cf90e49a08dea3d0225a34, type: 3}
+  - {fileID: 8300000, guid: 9a236cb83dfa5fa42b04ae9b1f197ab0, type: 3}
+  - {fileID: 8300000, guid: 38dd8fa0e4e2f9d4bb926f20992dd98c, type: 3}
+  - {fileID: 8300000, guid: 73800862088c91548840e17d52112b66, type: 3}
   dmg: 0
   speedRange: 1
   rotationSpeed: 0.5
@@ -393,7 +397,7 @@ SpriteRenderer:
   m_SortingOrder: -20
   m_MaskInteraction: 0
   m_Sprite: {fileID: 923000932, guid: ee7080eda76ec824798a599fbfd81e5c, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.8, g: 0.8, b: 0.8, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0

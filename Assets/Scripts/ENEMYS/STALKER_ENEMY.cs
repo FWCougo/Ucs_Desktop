@@ -26,8 +26,6 @@ public class STALKER_ENEMY : ENEMY
     {
         base.Die();
 
-        source.PlayOneShot(coin_clip);
-
         agent.speed = 0;
         agent.SetDestination(transform.position);
         walkTween.Kill();

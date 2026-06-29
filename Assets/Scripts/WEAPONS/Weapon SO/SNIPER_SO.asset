@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4cbb81e62ae7c0c4591bdbcedd88ce2d, type: 3}
+  m_Name: SNIPER_SO
+  m_EditorClassIdentifier: Assembly-CSharp::GUN_SO
+  itemName: SNIPER
+  itemSprite: {fileID: 1063298172, guid: c631479e22193d4468dc57721de70aeb, type: 3}
+  cadency: 0.75
+  damage: 4
+  weapon: {fileID: 387674898680422279, guid: 4dcb292fc4ff379429a22d05f58efc46, type: 3}
+  maxAmmo: 5
+  realoadTime: 3
+  bulletPrefab: {fileID: 4552089397755086433, guid: 88a2c068d0a8e3c4c972b7f311b20e55, type: 3}
+  bulletLifeSpan: 2
+  shotClip: {fileID: 8300000, guid: c8b21704136e4aa49930db1f24767a52, type: 3}

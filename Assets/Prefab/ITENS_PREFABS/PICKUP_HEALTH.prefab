@@ -251,9 +251,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   playerManager: {fileID: 0}
-  spriteTrans: {fileID: 8712293501775148422}
-  spriteShadowTrans: {fileID: 6672816066815080095}
-  col: {fileID: 0}
+  spriteTrans: {fileID: 779988891683044186}
+  spriteShadowTrans: {fileID: 6690452559707388653}
+  col: {fileID: 2207319915335809686}
   yMoveAmount: 2.2
   scaleAmount: 0.76
   healthRecoverAmount: 24

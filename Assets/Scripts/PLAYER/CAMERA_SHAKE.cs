@@ -34,6 +34,31 @@ public class CAMERA_SHAKE : MonoBehaviour
 
     // Presets prontos
     public void ShakeLight() => Shake(0.2f, 0.15f);
-    public void ShakeMedium() => Shake(0.2f, 0.25f);
+    public void ShakeMediumLight() => Shake(0.3f, 0.2f);
+    public void ShakeMedium() => Shake(0.3f, 0.25f);
     public void ShakeHeavy() => Shake(0.5f, 1.2f);
+
+    public void ShakeWithEnum(shakeMode _shakeMode)
+    {
+        switch(_shakeMode)
+        {
+            case shakeMode.Light:
+                ShakeLight();
+                break;
+
+            case shakeMode.LightMedium:
+                ShakeMediumLight();
+                break;
+
+            case shakeMode.Medium:
+                ShakeMedium();
+                break;
+
+            case shakeMode.Heavy:
+                ShakeHeavy();
+                break;
+        }
+    }
 }
+
+public enum shakeMode { Light, LightMedium, Medium, Heavy}

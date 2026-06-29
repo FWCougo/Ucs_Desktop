@@ -2,6 +2,7 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.SceneManagement;
 using DG.Tweening;
+using static Unity.VisualScripting.Member;
 
 public class GAME_MANAGER : MonoBehaviour
 {
@@ -13,6 +14,10 @@ public class GAME_MANAGER : MonoBehaviour
 
     public bool isDead = false;
     [SerializeField] private bool isPaused;
+
+    [Header("SFX")]
+    [SerializeField] private AudioSource source;
+    [SerializeField] private AudioClip gameOver_SFX;
 
     [Header("Controles")]
     [SerializeField] private SpriteRenderer wasdSprite;
@@ -84,11 +89,11 @@ public class GAME_MANAGER : MonoBehaviour
         {
             wasdSprite.DOFade(0, 15);
         });
-        
     }
 
     public void GAMEOVER()
     {
+        source.PlayOneShot(gameOver_SFX);
         Cursor.visible = true;
         isDead = true;
         MENU_MANAGER.Instance.OpenMenu("GAMEOVER_MENU");

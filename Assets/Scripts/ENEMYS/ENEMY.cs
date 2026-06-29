@@ -25,10 +25,10 @@ public class ENEMY : MonoBehaviour, IDamageable, IGiveDamage
     [SerializeField] private float randomness = 90;
     [Header("COLLISION")]
     [SerializeField]
-    private Collider collider;
+    private Collider col;
     [Header("SFX")]
     [SerializeField] public AudioSource source;
-    [SerializeField] public AudioClip coin_clip;
+    [SerializeField] public AudioClip[] death_clips;
     [Header("DMG")]
     [SerializeField] private float dmg;
     public float DMG
@@ -50,8 +50,6 @@ public class ENEMY : MonoBehaviour, IDamageable, IGiveDamage
     // ─── IDamageable ────────────────────────────────────────────────
     public void Damage(float dmg)
     {
-        print("DMG RECEIVED: " +dmg);
-
         if (canTakeDMG)
             StartCoroutine(TakeDamage(dmg));
     }
@@ -73,12 +71,17 @@ public class ENEMY : MonoBehaviour, IDamageable, IGiveDamage
     public virtual void Die()
     {
         GAME_MANAGER.Instance.enemyCount--;
-        collider.enabled = false;
+        col.enabled = false;
         DropItem();
         dmg = 0;
         isAlive = false;
         bloodSplatter_GO.transform.SetParent(null);
         bloodSplatter_GO.SetActive(true);
+
+        if(death_clips.Length > 0)
+        {
+            source.PlayOneShot(death_clips[Random.Range(0, death_clips.Length)]);
+        }
     }
     void DropItem()
     {

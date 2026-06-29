@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a53d4ab41807234b96dbdb94b7e6951, type: 3}
   m_Name: BOOMERANG_SO
   m_EditorClassIdentifier: Assembly-CSharp::BOOMERANG_SO
-  itemName: genericItem
+  itemName: Crossarang
   itemSprite: {fileID: 0}
   cadency: 1
   damage: 1

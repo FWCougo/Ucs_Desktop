@@ -4,8 +4,8 @@ using DG.Tweening;
 public abstract class PICKUP : MonoBehaviour
 {
     public PLAYER_MANAGER playerManager;
-    public GameObject spriteTrans;
-    public GameObject spriteShadowTrans;
+    public SpriteRenderer spriteTrans;
+    public SpriteRenderer spriteShadowTrans;
     [SerializeField] public Collider col;
     [SerializeField] private float yMoveAmount = 2.2f;
     [SerializeField] private float scaleAmount = 0.76f;

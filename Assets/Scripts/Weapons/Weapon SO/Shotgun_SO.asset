@@ -16,6 +16,7 @@ MonoBehaviour:
   itemSprite: {fileID: -849249960, guid: 0683699de7e13714abb0d2492d7e2126, type: 3}
   cadency: 0.4
   damage: 3
+  weapon: {fileID: 1755109079717457133, guid: a2321e6f1ba24ae438c5f4e8cd510ce9, type: 3}
   maxAmmo: 8
   realoadTime: 3
   bulletPrefab: {fileID: 2686044816604900693, guid: 5f9e1e2a979468b4b88e597526ee3f1b, type: 3}

@@ -136,9 +136,7 @@ public class SLIME_ENEMY : ENEMY
 
     public override void Die()
     {
-        base.Die();
-
-        source.PlayOneShot(coin_clip);        
+        base.Die();   
 
         agent.isStopped = true;
 

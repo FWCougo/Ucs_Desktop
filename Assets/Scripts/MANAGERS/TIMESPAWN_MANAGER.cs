@@ -115,12 +115,12 @@ public class TIMESPAWN_MANAGER : MonoBehaviour
         if(clockTime == 11)
         {
             clockTime = 0;
-            postTime = "AM";
+            postTime = "PM";
         }
         else
         {
             clockTime++;
-            postTime = "PM";
+            postTime = "AM";
         }
 
         time_TXT.text = $"{clockTime} {postTime}";
