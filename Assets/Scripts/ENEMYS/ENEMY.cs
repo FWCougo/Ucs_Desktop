@@ -85,28 +85,28 @@ public class ENEMY : MonoBehaviour, IDamageable, IGiveDamage
     }
     void DropItem()
     {
-        int _item = Random.Range(0, 100);
-        PICKUP _dropItem;
-        if(_item < 5) //Gun
+        // Calcula o peso total de todos os drops
+        float totalWeight = 0f;
+        foreach (PICKUP drop in drops)
+            totalWeight += drop.weight;
+
+        // Sorteia um valor entre 0 e o peso total
+        float roll = Random.Range(0f, totalWeight);
+
+        // Percorre os drops subtraindo o peso até encontrar o sorteado
+        PICKUP _dropItem = drops[drops.Length - 1]; // fallback pro último
+        foreach (PICKUP drop in drops)
         {
-            _dropItem = drops[0];
-        }
-        else if(_item < 10) //Pizza
-        {
-            _dropItem = drops[1];
-        }
-        else if(_item < 20) //Chicken
-        {
-            _dropItem = drops[2];
-        }
-        else //Coin
-        {
-            _dropItem = drops[3];
+            roll -= drop.weight;
+            if (roll <= 0f)
+            {
+                _dropItem = drop;
+                break;
+            }
         }
 
         Vector3 spawnPos = transform.position;
         spawnPos.y = 0.01f;
-
         Instantiate(_dropItem, spawnPos, Quaternion.identity);
     }
     // ─── VFX ────────────────────────────────────────────────────────

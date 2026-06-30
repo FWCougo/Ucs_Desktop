@@ -477,10 +477,12 @@ MonoBehaviour:
   enemy_SO: {fileID: 11400000, guid: 9a39d1cd42f8c6e42ae4480a7cfde044, type: 2}
   currentPlayer: {fileID: 0}
   drops:
-  - {fileID: 3829023614283986933, guid: 0a34cca8ef561f247b582f050eda0236, type: 3}
+  - {fileID: 2050433979555355772, guid: 63435d4961de6a44fa194f3b83520e78, type: 3}
   - {fileID: 6521653110523753464, guid: e11b3af652bb11e40a3312078dff23d4, type: 3}
   - {fileID: 6521653110523753464, guid: 4d654ce5f73171042bec326a32c1be26, type: 3}
-  - {fileID: 2050433979555355772, guid: 63435d4961de6a44fa194f3b83520e78, type: 3}
+  - {fileID: 8199312597960469185, guid: 87eaeedbb8660294387b03f6104a34fb, type: 3}
+  - {fileID: 3829023614283986933, guid: 0a34cca8ef561f247b582f050eda0236, type: 3}
+  - {fileID: 2045584977920792619, guid: 71cc7f2ce9752ef44be848722a8e3162, type: 3}
   enemySprite: {fileID: 9079478974631476807}
   shadowSprite: {fileID: 9182862429098412049}
   HP: 0

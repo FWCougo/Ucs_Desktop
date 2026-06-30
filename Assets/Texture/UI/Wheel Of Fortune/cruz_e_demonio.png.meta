@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 7d7a461a80232814982f62c526d42361
+guid: c99ffc9eb295bad4f98beb6061d514ba
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -72,7 +72,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -123,13 +123,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Devil2_0
+      name: cruz_e_demonio_0
       rect:
         serializedVersion: 2
-        x: 7
-        y: 6
-        width: 5
-        height: 6
+        x: 12
+        y: 14
+        width: 8
+        height: 10
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -138,8 +138,30 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 55b1bd4a1d3f18443a22cad0ad246535
-      internalID: 943074589
+      spriteID: c61a24e812c4cfb45b4c14c0ea29f55a
+      internalID: 558950322
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: cruz_e_demonio_1
+      rect:
+        serializedVersion: 2
+        x: 22
+        y: 14
+        width: 9
+        height: 10
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1eb767020b2f9844aa0040cb52a2e80f
+      internalID: -1076220206
       vertices: []
       indices: 
       edges: []
@@ -148,7 +170,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 5313acae4e9732c4a825cb6af5b260be
+    spriteID: b452820256b228c499c3f7b9404d1005
     internalID: 0
     vertices: []
     indices: 
@@ -160,7 +182,8 @@ TextureImporter:
       - key: SpriteEditor.SliceSettings
         value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":64.0,"y":64.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":0,"keepEmptyRects":false,"isAlternate":false}'
     nameFileIdTable:
-      Devil2_0: 943074589
+      cruz_e_demonio_0: 558950322
+      cruz_e_demonio_1: -1076220206
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

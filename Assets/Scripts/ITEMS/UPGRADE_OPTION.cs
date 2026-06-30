@@ -34,9 +34,13 @@ public class UPGRADE_OPTION : MonoBehaviour
     }
     public void ChangePreco()
     {
-        if (passiva_SO.preco.Length <= level) return;
+        if (passiva_SO.preco.Length <= level)
+        {
+            preco_TXT.text = $"MAX";
+            return;
+        }
         int _preco = passiva_SO.preco[level];
-        preco_TXT.text = $"-{_preco}";
+        preco_TXT.text = $"{_preco}";
     }
     public void ActivateIMGs()
     {

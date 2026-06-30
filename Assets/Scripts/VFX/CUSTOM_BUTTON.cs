@@ -20,6 +20,7 @@ public class CUSTOM_BUTTON : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
 
     public void OnPointerDown(PointerEventData eventData)
     {
+        transform.localScale = Vector3.one;
         evento.Invoke();
     }
 

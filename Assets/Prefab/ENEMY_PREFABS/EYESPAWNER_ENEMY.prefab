@@ -110,8 +110,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1.67, y: 4.2041607, z: 1}
-  m_Center: {x: -0.19, y: 2.1020803, z: 0.39999998}
+  m_Size: {x: 1.67, y: 4.2041607, z: 3.270859}
+  m_Center: {x: -0.19, y: 2.1020803, z: 1.5354294}
 --- !u!1 &2195199931824109389
 GameObject:
   m_ObjectHideFlags: 0
@@ -476,10 +476,12 @@ MonoBehaviour:
   enemy_SO: {fileID: 11400000, guid: db19aa213528e62498fa61dad406c070, type: 2}
   currentPlayer: {fileID: 0}
   drops:
-  - {fileID: 3829023614283986933, guid: 0a34cca8ef561f247b582f050eda0236, type: 3}
+  - {fileID: 2050433979555355772, guid: 63435d4961de6a44fa194f3b83520e78, type: 3}
   - {fileID: 6521653110523753464, guid: e11b3af652bb11e40a3312078dff23d4, type: 3}
   - {fileID: 6521653110523753464, guid: 4d654ce5f73171042bec326a32c1be26, type: 3}
-  - {fileID: 2050433979555355772, guid: 63435d4961de6a44fa194f3b83520e78, type: 3}
+  - {fileID: 8199312597960469185, guid: 87eaeedbb8660294387b03f6104a34fb, type: 3}
+  - {fileID: 3829023614283986933, guid: 0a34cca8ef561f247b582f050eda0236, type: 3}
+  - {fileID: 2045584977920792619, guid: 71cc7f2ce9752ef44be848722a8e3162, type: 3}
   enemySprite: {fileID: 1061378780753704165}
   shadowSprite: {fileID: 2968444421379912423}
   HP: 0

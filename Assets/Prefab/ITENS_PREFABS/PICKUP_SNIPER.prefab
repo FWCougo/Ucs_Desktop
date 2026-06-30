@@ -166,6 +166,7 @@ MonoBehaviour:
   col: {fileID: 6284780991057376674}
   yMoveAmount: 2.2
   scaleAmount: 0.76
+  weight: 2
   weapon: {fileID: 387674898680422279, guid: 4dcb292fc4ff379429a22d05f58efc46, type: 3}
   weapon_SO: {fileID: 11400000, guid: 08271a7cac61a234ea779bd732baf709, type: 2}
 --- !u!1 &3807478064293512068

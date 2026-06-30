@@ -10,6 +10,10 @@ public abstract class PICKUP : MonoBehaviour
     [SerializeField] private float yMoveAmount = 2.2f;
     [SerializeField] private float scaleAmount = 0.76f;
 
+    [Tooltip("Numero de importancia desse pickup")]
+    [Min(0f)]
+    [SerializeField] public float weight = 0;
+
     private void Start()
     {
         //float _yPos = spriteTrans.transform.position.y;

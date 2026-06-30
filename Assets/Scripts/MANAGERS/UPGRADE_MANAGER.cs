@@ -35,6 +35,14 @@ public class UPGRADE_MANAGER : MonoBehaviour
     [SerializeField] private PASSIVA_SO regen_SO;
     public void UpgradeRegenLV()
     {
+        if (regenLV >= 5)
+        {
+            StartCoroutine(ShowTXT("UPGRADE NO MAXIMO", Color.yellow));
+            source.PlayOneShot(cantBuy_Clip);
+            CheckRegenLV();
+            return;
+        }
+
         int _currentCoins = GAME_MANAGER.Instance.GetCoins();
         int _neededCoins = regen_SO.preco[regenLV];
 
@@ -77,6 +85,14 @@ public class UPGRADE_MANAGER : MonoBehaviour
 
     public void UpgradeHpLV()
     {
+        if (hpLV >= 5)
+        {
+            StartCoroutine(ShowTXT("UPGRADE NO MAXIMO", Color.yellow));
+            source.PlayOneShot(cantBuy_Clip);
+            CheckHPLV();
+            return;
+        }
+
         int _currentCoins = GAME_MANAGER.Instance.GetCoins();
         int _neededCoins = hp_SO.preco[hpLV];
 
@@ -118,6 +134,15 @@ public class UPGRADE_MANAGER : MonoBehaviour
 
     public void UpgradeSpeedLV()
     {
+        if (speedLV >= 5)
+        {
+            StartCoroutine(ShowTXT("UPGRADE NO MAXIMO", Color.yellow));
+            source.PlayOneShot(cantBuy_Clip);
+            CheckSpeedLV();
+            return;
+        }
+
+
         int _currentCoins = GAME_MANAGER.Instance.GetCoins();
         int _neededCoins = speed_SO.preco[speedLV];
 
@@ -159,6 +184,14 @@ public class UPGRADE_MANAGER : MonoBehaviour
 
     public void UpgradeDmgLV()
     {
+        if(dmgLV >= 5)
+        {
+            StartCoroutine(ShowTXT("UPGRADE NO MAXIMO", Color.yellow));
+            source.PlayOneShot(cantBuy_Clip);
+            CheckDmgLV();
+            return;
+        }
+
         int _currentCoins = GAME_MANAGER.Instance.GetCoins();
         int _neededCoins = speed_SO.preco[dmgLV];
 
@@ -203,6 +236,17 @@ public class UPGRADE_MANAGER : MonoBehaviour
     [ContextMenu("RESETAR_NIVEIS")]
     public void ResetUpgrades()
     {
+        if(moneySpent > 0)
+        {
+            StartCoroutine(ShowTXT("REEMBOLSO REALIZADO", Color.green));
+            source.PlayOneShot(couldBuy_Clip);
+        }
+        else
+        {
+            StartCoroutine(ShowTXT("NADA PARA REEMBOLSAR", Color.red));
+            source.PlayOneShot(cantBuy_Clip);
+        }
+
         PlayerPrefs.SetInt("REGEN_LV_KEY",0);
         PlayerPrefs.SetInt("HP_LV_KEY",0);
         PlayerPrefs.SetInt("SPEED_LV_KEY",0);

@@ -30,6 +30,8 @@ public class EYESPAWNER_ENEMY : ENEMY
 
     public override void Die()
     {
+        StopCoroutine(DoStuff());
+
         base.Die();
 
         Vector3 rot = enemySprite.transform.rotation.eulerAngles;

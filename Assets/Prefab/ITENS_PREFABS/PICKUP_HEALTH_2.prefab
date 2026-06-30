@@ -165,6 +165,7 @@ MonoBehaviour:
   col: {fileID: 2207319915335809686}
   yMoveAmount: 2.2
   scaleAmount: 0.76
+  weight: 10
   healthRecoverAmount: 17
 --- !u!1 &8009691258477742775
 GameObject:

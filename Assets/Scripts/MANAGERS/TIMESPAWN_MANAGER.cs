@@ -40,10 +40,24 @@ public class TIMESPAWN_MANAGER : MonoBehaviour
 
     [SerializeField] private GameObject WIN_GO;
 
+    [Header("VFX")]
+    [SerializeField] GameObject smokeParticles;
+
     [Header("Ground")]
     [SerializeField] private SpriteRenderer groundSprite;
     [SerializeField] private Color startColor;
     [SerializeField] private Color endColor;
+
+    [Header("References")]
+    [SerializeField] private WHELL_OF_FORTUNE whellOfFortune;
+
+    [Header("PRE FINAL")]
+    [SerializeField] private TMP_Text preFInall_TXT;
+
+    [Header("SFX")]
+    [SerializeField] bool musicPlayed = false;
+    [SerializeField] AudioSource sourceMusic;
+    [SerializeField] AudioClip victoryClip;
 
     private void Awake()
     {
@@ -52,6 +66,10 @@ public class TIMESPAWN_MANAGER : MonoBehaviour
 
     private void Start()
     {
+        smokeParticles.SetActive(false);
+
+        preFInall_TXT.gameObject.SetActive(false);
+
         changeStuffIDK = 0;
         timeSlider.maxValue = 7 * 60;
         timeSlider.value = 0;
@@ -72,7 +90,7 @@ public class TIMESPAWN_MANAGER : MonoBehaviour
         currentEnemyList = enemyPool[0].enemyList;
         spawnRate = enemyPool[0].spawnRate;
         StartCoroutine(SpawnEnemies());
-        groundSprite.DOColor(endColor, 7 * 60).SetEase(Ease.InSine);
+        
     }
 
     private void Update()
@@ -92,11 +110,23 @@ public class TIMESPAWN_MANAGER : MonoBehaviour
         if(clockTime == 6 && GAME_MANAGER.Instance.enemyCount == 0)
         {
             WIN_GO.SetActive(true);
+            if (!musicPlayed)
+            {
+                musicPlayed = true;
+                sourceMusic.Stop();
+                sourceMusic.loop = false;
+                sourceMusic.clip = victoryClip;
+                sourceMusic.volume = 1f;
+                sourceMusic.Play();
+            }
         }
     }
 
+    
+
     private void ChangeRound()
     {
+        whellOfFortune.ClearEffects();
         source.PlayOneShot(clip_Bell);
         round++;
         //Pega a lista de Inimigos deste round
@@ -104,6 +134,7 @@ public class TIMESPAWN_MANAGER : MonoBehaviour
         changeStuffIDK = 0;
         ChangeTime();
         spawnRate = enemyPool[round-1].spawnRate;
+        whellOfFortune.SPIN_THE_WHEEL();
 
         //spawnRate -= 0.1f;
     }
@@ -115,7 +146,7 @@ public class TIMESPAWN_MANAGER : MonoBehaviour
         if(clockTime == 11)
         {
             clockTime = 0;
-            postTime = "PM";
+            postTime = "AM";
         }
         else
         {
@@ -125,16 +156,26 @@ public class TIMESPAWN_MANAGER : MonoBehaviour
 
         time_TXT.text = $"{clockTime} {postTime}";
 
+        if (clockTime == 1)
+        {
+            smokeParticles.SetActive(true);
+        }
+
+        if (clockTime == 3)
+        {
+            groundSprite.DOColor(endColor, 5 * 60).SetEase(Ease.InSine);
+        }
 
         if (clockTime == 6)
         {
+            preFInall_TXT.gameObject.SetActive(true);   
             isSpawning = false;
         }
     }
 
     IEnumerator SpawnEnemies()
     {
-        yield return new WaitForSeconds(5);
+        yield return new WaitForSeconds(10);
 
         while (isSpawning) {
 

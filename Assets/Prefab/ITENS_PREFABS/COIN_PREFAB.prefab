@@ -243,6 +243,7 @@ MonoBehaviour:
   col: {fileID: 6714301173124396076}
   yMoveAmount: 3
   scaleAmount: 0.75
+  weight: 100
   source: {fileID: 3297578279076321511}
   coinValue: 1
 --- !u!65 &6714301173124396076

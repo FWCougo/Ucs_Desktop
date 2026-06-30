@@ -31,6 +31,7 @@ public class GAME_MANAGER : MonoBehaviour
     [SerializeField] private TMP_Text kill_TXT;
 
     [Header("COINS")]
+    [SerializeField] private bool doubleCoins = false;
     [SerializeField] private int coins = 0;
     [SerializeField] private TMP_Text coinsGame_TXT;
     [SerializeField] private TMP_Text coinsUpgrade_TXT;
@@ -140,6 +141,10 @@ public class GAME_MANAGER : MonoBehaviour
     }
 
     #region COINS
+    public void DoubleCoins(bool value)
+    {
+        doubleCoins = value;
+    }
     public void LoadCoins()
     {
         coins = PlayerPrefs.GetInt("COIN_KEY");
@@ -148,7 +153,15 @@ public class GAME_MANAGER : MonoBehaviour
     }
     public void ChangeCoins(int _i)
     {
-        coins += _i;
+        if (doubleCoins)
+        {
+            coins += _i*2;
+        }
+        else
+        {
+            coins += _i;
+        }
+        
         coinsUpgrade_TXT.text = $"{coins}";
         coinsGame_TXT.text = $"{coins}";
         PlayerPrefs.SetInt("COIN_KEY", coins);
