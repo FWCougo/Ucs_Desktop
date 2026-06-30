@@ -15,6 +15,9 @@ public class DEVIL_SCRIPT : MonoBehaviour
 
     public static DEVIL_SCRIPT Instance;
 
+    public AudioSource source;
+    public AudioClip thunderClip;
+
     void Awake()
     {
         Instance = this;
@@ -39,6 +42,7 @@ public class DEVIL_SCRIPT : MonoBehaviour
 
     IEnumerator BusinessDevil()
     {
+        source.PlayOneShot(thunderClip);
         mainSprite.sprite = laserDevil;
         devilTremendo = transform.DOShakePosition(0.5f, 1, 50, 90);
 
@@ -51,6 +55,8 @@ public class DEVIL_SCRIPT : MonoBehaviour
 
     IEnumerator StartGameEnum()
     {
+
+        source.PlayOneShot(thunderClip);
         mainSprite.sprite = laserDevil;
         devilTremendo = transform.DOShakePosition(0.5f, 1, 50, 90);
 

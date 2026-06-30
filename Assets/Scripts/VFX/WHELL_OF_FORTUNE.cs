@@ -180,6 +180,8 @@ public class WHELL_OF_FORTUNE : MonoBehaviour
     {
         if (value)
         {
+            result_TXT.gameObject.SetActive(true);
+            result_TXT.text = "2X MOEDAS";
             doubleCoins_GO.SetActive(true);
             DoubleCoinVFX = doubleCoins_GO.transform.DOScale(1.2f,1).SetLoops(-1, LoopType.Yoyo);
         }
@@ -187,6 +189,7 @@ public class WHELL_OF_FORTUNE : MonoBehaviour
         {
             DoubleCoinVFX.Kill();
             doubleCoins_GO.SetActive(false);
+            result_TXT.gameObject.SetActive(false);
             doubleCoins_GO.transform.localScale = Vector3.one;
         }
 
